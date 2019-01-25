@@ -1,0 +1,28 @@
+{
+  "name": "ninelives",
+  "version": "1.0.0",
+  "description": "Game for the global game jam 2019 😺😺😺😺😺😺😺😺😺",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamnellis/NineLives.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamnellis/NineLives/issues"
+  },
+  "homepage": "https://github.com/adamnellis/NineLives#readme",
+  "dependencies": {
+    "phaser": "3.3.0"
+  },
+  "devDependencies": {
+    "raw-loader": "0.5.1",
+    "webpack": "3.4.1",
+    "webpack-dev-server": "2.11.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "npm run build && webpack-dev-server --port=8000"
+  }
+}
