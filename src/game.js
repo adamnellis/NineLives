@@ -78,6 +78,27 @@ console.log(this);
         this.cameras.main.setBounds(0, 0, constants.game_width, constants.game_height);
         this.cameras.main.startFollow(this.cat.sprite);
         this.cameras.main.setBackgroundColor('#858585');
+
+
+        // Check for collisions
+        this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
+            // Find out if any of our custom objects collided
+            let custom_object_a = bodyA.gameObject;
+            if (custom_object_a !== null) {
+                custom_object_a = custom_object_a.custom_object || null;
+            }
+            let custom_object_b = bodyB.gameObject;
+            if (custom_object_b !== null) {
+                custom_object_b = custom_object_b.custom_object || null;
+            }
+            // console.log('collision', custom_object_a, custom_object_b);
+
+            // Check for player-car collisions
+            if ((custom_object_a instanceof Player && custom_object_b instanceof Car) ||
+                (custom_object_b instanceof Player && custom_object_a instanceof Car)) {
+                console.log('Collision between player and car');
+            }
+        });
     }
 
 

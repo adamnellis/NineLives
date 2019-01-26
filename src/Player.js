@@ -13,6 +13,7 @@ export default class Player {
         // Create the physics-based sprite that we will move around and animate
         this.sprite = scene.matter.add.sprite(x, y, sheet);
 
+        this.sprite.custom_object = this;
 
         this.sprite.setFixedRotation()
         this.scene.events.on("update", this.update, this);
