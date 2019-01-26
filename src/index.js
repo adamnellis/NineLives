@@ -5,24 +5,33 @@ var config = {
     parent: 'phaser-example',
     width: 800,
     height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
     scene: {
         preload: preload,
-        create: create
+        // create: demo,
+        create: platforms,
     }
 };
 
 var game = new Phaser.Game(config);
 
-function preload ()
-{
+function preload () {
     this.load.image('logo', 'assets/logo.png');
     this.load.image('red-particle', 'assets/particles/red.png');
     this.load.image('flame-particle', 'assets/particles/flame1.png');
+
+    this.load.image('sky', 'assets/sky.png');
+    this.load.image('ground', 'assets/platform.png');
 }
 
-function create ()
-{
-    var logo = this.add.image(400, 150, 'logo');
+function demo () {
+    const logo = this.add.image(400, 150, 'logo');
 
     this.tweens.add({
         targets: logo,
@@ -33,9 +42,9 @@ function create ()
         loop: -1
     });
 
-    var particles = this.add.particles('red-particle');
+    const particles = this.add.particles('red-particle');
 
-    var emitter = particles.createEmitter({
+    const emitter = particles.createEmitter({
         speed: 100,
         scale: { start: 1, end: 0 },
         blendMode: 'ADD'
@@ -43,8 +52,8 @@ function create ()
 
     emitter.startFollow(logo);
 
-    var particles_fire = this.add.particles('flame-particle');
-    var emitter_fire = particles_fire.createEmitter({
+    const particles_fire = this.add.particles('flame-particle');
+    const emitter_fire = particles_fire.createEmitter({
         speed: 100,
         frequency: 1,
         maxVelocityX: 10,
@@ -54,4 +63,16 @@ function create ()
         y: 500,
     });
 
+}
+
+function platforms() {
+    this.add.image(400, 300, 'sky');
+
+    const platforms = this.physics.add.staticGroup();
+
+    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+
+    platforms.create(600, 400, 'ground');
+    platforms.create(50, 250, 'ground');
+    platforms.create(750, 220, 'ground');
 }
