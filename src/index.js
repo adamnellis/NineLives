@@ -6,10 +6,9 @@ var config = {
     width: 800,
     height: 600,
     physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 300 },
-            debug: false
+        default: 'matter',
+        matter: {
+            debug: false,
         }
     },
     scene: {
@@ -67,30 +66,21 @@ function demo () {
 }
 
 function platforms() {
+    this.matter.world.setBounds(0, -200, game.config.width, game.config.height + 200);
+
     // Background image
     this.add.image(400, 300, 'sky');
 
     // Static obstacles
-    const platforms = this.physics.add.staticGroup();
+    this.matter.add.image(200, 580, 'ground', null, { restitution: 0.6, isStatic: true });
+    this.matter.add.image(600, 580, 'ground', null, { restitution: 0.6, isStatic: true });
 
-    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
-
-    platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
-    platforms.create(750, 220, 'ground');
+    this.matter.add.image(600, 400, 'ground', null, { restitution: 0.6, isStatic: true });
+    this.matter.add.image(50, 250, 'ground', null, { restitution: 0.6, isStatic: true });
+    this.matter.add.image(750, 220, 'ground', null, { restitution: 0.6, isStatic: true });
 
     // Moving obstacles
-    const crates = this.physics.add.group();
-
-    this.physics.add.collider(crates, platforms);
-    this.physics.add.collider(crates, crates);
-
-    for (let i=0; i< 20; i++) {
-        const crate = crates.create(Phaser.Math.Between(20, 700), 16, 'crate');
-        crate.setBounce(0.6);
-        crate.setDrag(0.7);
-        crate.setCollideWorldBounds(true);
-        crate.setVelocity(Phaser.Math.Between(-200, 200), 20);
-        crate.allowGravity = false;
+    for (let i=0; i< 10; i++) {
+        this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
     }
 }
