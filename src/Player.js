@@ -67,6 +67,10 @@ export default class Player {
             this.sprite.setVelocityY(-15);
         }
 
+        // Check if we are in the flashing animation state
+        if (this.flashing_animation_key) {
+            this.sprite.anims.play(this.flashing_animation_key, true);
+        }
 
     }
 
