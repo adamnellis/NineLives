@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
 import Player from "./player.js";
-import Cat from "./cat.js";
 import Car from "./car.js";
 
 import constants from './constants.js';
@@ -65,17 +64,16 @@ export default new Phaser.Class({
         }, this);
 
 
-console.log(this);
+
 
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.kitten = new Player(this, physics_x_start + 100, 10, 'kitten');
+        this.player = new Player(this, physics_x_start + 100, 10);
         this.car = new Car(this, constants.car_x, constants.car_y);
 
-        this.cat = new Cat(this, 900, 40, 'cat');
 
         // Make camera follow the player
         this.cameras.main.setBounds(0, 0, constants.game_width, constants.game_height);
-        this.cameras.main.startFollow(this.cat.sprite);
+        this.cameras.main.startFollow(this.player.sprite);
         this.cameras.main.setBackgroundColor('#858585');
     }
 
