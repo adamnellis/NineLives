@@ -52,9 +52,20 @@ function platforms() {
     this.matter.add.image(750, 220, 'ground', null, { restitution: 0.6, isStatic: true });
 
 
-    player = this.physics.add.sprite(100, 450, 'cat-body');
-    playerhead = this.add.sprite(100, 450, 'cat-head')
+
+   var category2 = this.matter.world.nextCategory();
+
+    player = this.matter.add.sprite(100, 480, 'cat-body');
+    playerhead = this.matter.add.sprite(100, 450, 'cat-head')
+    playerhead.setCollisionCategory(category2);
     playerhead.gravity = 0;
+
+    player.setCollidesWith([ 1 ]);
+
+
+
+
+    //this.matter.add.constraint(player, playerhead, 50, 0.9 );
 
 
     // Moving obstacles
@@ -62,40 +73,41 @@ function platforms() {
         this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
     }
 
+    cursors = game.input.keyboard.createCursorKeys();
 }
 
 function update(){
 
     if (cursors.left.isDown)
     {
-        player.setVelocityX(-160);
-
-
-        //player.anims.play('left', true);
+        player.setVelocityX(-10);
     }
     else if (cursors.right.isDown)
     {
-        player.setVelocityX(160);
-
-       // player.anims.play('right', true);
+        player.setVelocityX(10);
     }
     else
     {
         player.setVelocityX(0);
-
-       // player.anims.play('turn');
     }
 
-    if (cursors.up.isDown && player.body.touching.down)
+    if (cursors.up.isDown)
     {
-        player.setVelocityY(-330);
+        player.setVelocityY(-10);
+    }
+    else if (cursors.down.isDown)
+    {
+        player.setVelocityY(10);
+    }
+    else
+    {
+        player.setVelocityY(0);
     }
 
+   // console.log(player.body)
 
-    console.log(player.y)
-
-playerhead.y = player.y;
-    console.log(playerhead.y)
+//playerhead.y = player.y;
+   // console.log(playerhead.y)
     //playerhead.setPosition(player.x + 10, player.y +10)
 
 }
