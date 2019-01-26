@@ -20,13 +20,25 @@ export default new Phaser.Class({
         this.load.image('sky', 'assets/sky.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('crate', 'assets/crate.jpg');
+        this.load.image(
+            "player",
+            "assets/fullKitten.png",
+            // {
+            //     frameWidth: 32,
+            //     frameHeight: 32,
+            //     margin: 1,
+            //     spacing: 2
+            // }
+        );
     },
+
 
     create: function ()
     {
         console.log('%c Preloader ', 'background: green; color: white; display: block;');
 
         this.scene.start('mainmenu');
+
     }
 
 });

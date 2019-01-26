@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Player from "./player.js";
 
 import constants from './constants.js';
 
@@ -47,6 +48,16 @@ export default new Phaser.Class({
             }
 
         }, this);
+
+
+
+
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.player = new Player(this, 5, 10);
+
+
+
     }
+
 
 });
