@@ -1,5 +1,4 @@
 import 'phaser';
-import Player from "./player.js";
 
 import constants from './constants.js';
 import Preloader from './preloader.js';
