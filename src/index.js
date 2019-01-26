@@ -1,4 +1,5 @@
 import 'phaser';
+import Player from "./player.js";
 
 var config = {
     type: Phaser.AUTO,
@@ -29,7 +30,7 @@ function preload () {
     this.load.image('red-particle', 'assets/particles/red.png');
     this.load.image('flame-particle', 'assets/particles/flame1.png');
 
-    this.load.image('cat-body', 'assets/kittenbody.png');
+    this.load.image('player', 'assets/fullKitten.png', 5, 5);
     this.load.image('cat-head', 'assets/kittenHead.png');
 
     this.load.image('sky', 'assets/sky.png');
@@ -51,66 +52,20 @@ function platforms() {
     this.matter.add.image(50, 250, 'ground', null, { restitution: 0.6, isStatic: true });
     this.matter.add.image(750, 220, 'ground', null, { restitution: 0.6, isStatic: true });
 
-
-
-   var category2 = this.matter.world.nextCategory();
-
-    player = this.matter.add.sprite(100, 480, 'cat-body');
-    playerhead = this.matter.add.sprite(100, 450, 'cat-head')
-    playerhead.setCollisionCategory(category2);
-    playerhead.gravity = 0;
-
-    player.setCollidesWith([ 1 ]);
-
-
-
-
-    //this.matter.add.constraint(player, playerhead, 50, 0.9 );
-
+    player = new Player(this, 10, 10)
 
     // Moving obstacles
     for (let i=0; i< 10; i++) {
         this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
     }
 
-    cursors = game.input.keyboard.createCursorKeys();
 }
 
 function update(){
 
-    if (cursors.left.isDown)
-    {
-        player.setVelocityX(-10);
-    }
-    else if (cursors.right.isDown)
-    {
-        player.setVelocityX(10);
-    }
-    else
-    {
-        player.setVelocityX(0);
-    }
-
-    if (cursors.up.isDown)
-    {
-        player.setVelocityY(-10);
-    }
-    else if (cursors.down.isDown)
-    {
-        player.setVelocityY(10);
-    }
-    else
-    {
-        player.setVelocityY(0);
-    }
-
-   // console.log(player.body)
-
-//playerhead.y = player.y;
-   // console.log(playerhead.y)
-    //playerhead.setPosition(player.x + 10, player.y +10)
+   
 
 }
 
-   
+
 
