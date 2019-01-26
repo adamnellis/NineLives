@@ -4,7 +4,7 @@ import Kitten from "./kitten.js";
 
 import Cat from "./cat.js";
 import Car from "./car.js";
-import Player from "./player.js"
+import Player from "./Player.js"
 
 import constants from './constants.js';
 
@@ -67,17 +67,16 @@ export default new Phaser.Class({
 
         }, this);
 
-
-
-
         this.kitten = new Kitten(this, physics_x_start + 100, 10, 'kitten');
         this.cat = new Cat(this, physics_x_start + 100, 30, 'cat');
         this.car = new Car(this, constants.car_x, constants.car_y);
 
+        this.dot = this.matter.add.sprite(700, 700, 'dot');
+        this.dot.visible = false;
 
         // Make camera follow the kitten
         this.cameras.main.setBounds(0, 0, constants.game_width, constants.game_height);
-        this.cameras.main.startFollow(this.kitten.sprite);
+        this.cameras.main.startFollow(this.dot);
         this.cameras.main.setBackgroundColor('#858585');
 
 
@@ -100,6 +99,37 @@ export default new Phaser.Class({
                 console.log('Collision between player and car');
             }
         });
+    },
+
+    update: function(){
+
+        var catX = this.cat.sprite.x;
+        var kittenX = this.kitten.sprite.x;
+
+        this.dot.x = (catX + kittenX)/ 2
+
+        if(catX - kittenX > constants.viewport_width - 5){
+            this.kitten.allowMoveRight = true;
+            this.kitten.allowMoveLeft = false;
+            this.cat.allowMoveRight = false;
+            this.cat.allowMoveLeft = true;
+        } else if(kittenX - catX > constants.viewport_width - 5){
+            this.kitten.allowMoveRight = false;
+            this.kitten.allowMoveLeft = true;
+            this.cat.allowMoveRight = true;
+            this.cat.allowMoveLeft = false;
+        } else {
+            this.kitten.allowMoveRight = true;
+            this.kitten.allowMoveLeft = true;
+            this.cat.allowMoveRight = true;
+            this.cat.allowMoveLeft = true;
+        }
+
+
+
+
+
+
     }
 
 

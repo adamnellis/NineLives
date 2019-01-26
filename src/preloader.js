@@ -32,6 +32,7 @@ export default new Phaser.Class({
             { frameWidth: 691, frameHeight: 259 });
         this.load.image("kitten", "assets/fullKitten.png");
         this.load.image("cat", "assets/fullCat.png");
+        this.load.image("dot", "assets/dot.png");
     },
 
 
