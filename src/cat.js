@@ -1,4 +1,4 @@
-import Person from "./Player.js";
+import Person from "./player.js";
 
 export default class Cat extends Person{
 

@@ -14,12 +14,17 @@ export default class Player {
         this.sprite = scene.matter.add.sprite(x, y, sheet);
 
 
+
+
+
         this.sprite.setFixedRotation()
         this.scene.events.on("update", this.update, this);
     }
 
     update() {
         var cursors = this.scene.cursors;
+
+
 
         // Check if we are allowed to jump
         if (Math.abs(this.sprite.body.velocity.y) < 1e-6) {
@@ -38,10 +43,12 @@ export default class Player {
         if (cursors.left.isDown)
         {
             this.sprite.setVelocityX(-10);
+           // this.sprite.flipX =false
         }
         else if (cursors.right.isDown)
         {
             this.sprite.setVelocityX(10);
+           // this.sprite.flipX =true
         }
         else
         {

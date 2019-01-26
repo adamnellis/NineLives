@@ -70,13 +70,13 @@ console.log(this);
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.kitten = new Player(this, physics_x_start + 100, 10, 'kitten');
-        this.car = new Car(this, constants.car_x, constants.car_y);
-
-        this.cat = new Cat(this, 900, 40, 'cat');
-
+        // this.car = new Car(this, constants.car_x, constants.car_y);
+        //
+        // this.cat = new Cat(this, 900, 40, 'cat');
+        //
         // Make camera follow the player
         this.cameras.main.setBounds(0, 0, constants.game_width, constants.game_height);
-        this.cameras.main.startFollow(this.cat.sprite);
+        this.cameras.main.startFollow(this.kitten.sprite);
         this.cameras.main.setBackgroundColor('#858585');
     }
 
