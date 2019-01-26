@@ -22,6 +22,7 @@ var config = {
 
 var game = new Phaser.Game(config);
 var player;
+var playerhead;
 var cursors;
 
 function preload () {
@@ -29,7 +30,8 @@ function preload () {
     this.load.image('red-particle', 'assets/particles/red.png');
     this.load.image('flame-particle', 'assets/particles/flame1.png');
 
-    this.load.image('cat-body', 'assets/cat/body.png');
+    this.load.image('cat-body', 'assets/kittenbody.png');
+    this.load.image('cat-head', 'assets/kittenHead.png');
 
     this.load.image('sky', 'assets/sky.png');
     this.load.image('ground', 'assets/platform.png');
@@ -51,16 +53,19 @@ function platforms() {
 
 
     player = this.physics.add.sprite(100, 450, 'cat-body');
+    playerhead = this.add.sprite(100, 450, 'cat-head')
+    playerhead.gravity = 0;
+
 
     cursors = this.input.keyboard.createCursorKeys();
-
-    this.physics.add.collider(player, platforms);
 
      // Moving obstacles
     const crates = this.physics.add.group();
 
     this.physics.add.collider(crates, platforms);
     this.physics.add.collider(crates, crates);
+    this.physics.add.collider(crates, player);
+    this.physics.add.collider(player, platforms);
 
     for (let i=0; i< 20; i++) {
         const crate = crates.create(Phaser.Math.Between(20, 700), 16, 'crate');
@@ -74,11 +79,11 @@ function platforms() {
 }
 
 function update(){
-    debugger;
 
     if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
+
 
         //player.anims.play('left', true);
     }
@@ -101,8 +106,13 @@ function update(){
     }
 
 
+    console.log(player.y)
+
+playerhead.y = player.y;
+    console.log(playerhead.y)
+    //playerhead.setPosition(player.x + 10, player.y +10)
+
 }
 
    
-}
 
