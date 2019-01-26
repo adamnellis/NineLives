@@ -16,13 +16,16 @@ export default new Phaser.Class({
     {
         console.log('%c MainMenu ', 'background: green; color: white; display: block;');
 
-        const text = this.add.text(150, 100, '😺😺😺😺😺😺😺😺😺', { font: '40px Courier', fill: '#ff0000' });
-        text.setInteractive();
-        text.once('pointerup', function () {
+        this.add.image(400, 300, 'title');
 
-            this.scene.start('game');
+        // Wait a little before adding click handler, so that clicks from the game over screen don't trigger this
+        setTimeout(() => {
+            this.input.once('pointerup', function () {
 
-        }, this);
+                this.scene.start('game');
+
+            }, this);
+        }, 500);
     }
 
 });
