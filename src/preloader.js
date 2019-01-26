@@ -27,6 +27,9 @@ export default new Phaser.Class({
         this.load.image('sky', 'assets/sky.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('crate', 'assets/crate.jpg');
+
+        this.load.spritesheet('car', 'assets/car.png',
+            { frameWidth: 691, frameHeight: 259 });
         this.load.image(
             "player",
             "assets/fullKitten.png",

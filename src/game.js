@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Player from "./player.js";
+import Car from "./car.js";
 
 import constants from './constants.js';
 
@@ -67,7 +68,7 @@ export default new Phaser.Class({
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.player = new Player(this, physics_x_start + 100, 10);
-
+        this.car = new Car(this, 600, 600);
 
 
         // Make camera follow the player
