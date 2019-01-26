@@ -15,8 +15,10 @@ export default new Phaser.Class({
     {
         this.load.image('title', 'assets/Title.png');
         this.load.image('game-background', 'assets/background.png');
-        this.load.image('windowsill', 'assets/windowsill.png');
-        this.load.image('door-top', 'assets/doorTop.png');
+        this.load.image('windowsill', 'assets/invisible/windowsill.png');
+        this.load.image('door-top', 'assets/invisible/doorTop.png');
+        this.load.image('garage-side', 'assets/invisible/garageSide.png');
+        this.load.image('garage-top', 'assets/invisible/garageTop.png');
 
         this.load.image('logo', 'assets/logo.png');
         this.load.image('red-particle', 'assets/particles/red.png');
@@ -25,6 +27,9 @@ export default new Phaser.Class({
         this.load.image('sky', 'assets/sky.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('crate', 'assets/crate.jpg');
+
+        this.load.spritesheet('car', 'assets/car.png',
+            { frameWidth: 691, frameHeight: 259 });
         this.load.image(
             "player",
             "assets/fullKitten.png",

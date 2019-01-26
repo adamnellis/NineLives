@@ -21,7 +21,7 @@ export default class Player {
         // });
 
         // Create the physics-based sprite that we will move around and animate
-        this.sprite = scene.matter.add.sprite(100, 100, "player");
+        this.sprite = scene.matter.add.sprite(x, y, "player");
 
 
         this.sprite.setFixedRotation()
