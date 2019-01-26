@@ -1,71 +1,27 @@
 import 'phaser';
 import Player from "./player.js";
 
+import constants from './constants.js';
+import Preloader from './preloader.js';
+import MainMenu from './mainmenu.js';
+import Game from './game.js';
+import Win from './win.js';
+import Lose from './lose.js';
+
 var config = {
     type: Phaser.AUTO,
     parent: 'phaser-example',
-    width: 800,
-    height: 600,
+    width: constants.game_width,
+    height: constants.game_height,
     physics: {
         default: 'matter',
         matter: {
             debug: false,
         }
     },
-    scene: {
-        preload: preload,
-        // create: demo,
-        create: platforms,
-        update: update
-    }
+
+    scene: [ Preloader, MainMenu, Game, Win, Lose ]
 };
 
 var game = new Phaser.Game(config);
-var player;
-var playerhead;
-var cursors;
-
-function preload () {
-    this.load.image('logo', 'assets/logo.png');
-    this.load.image('red-particle', 'assets/particles/red.png');
-    this.load.image('flame-particle', 'assets/particles/flame1.png');
-
-    this.load.image('player', 'assets/fullKitten.png', 5, 5);
-    this.load.image('cat-head', 'assets/kittenHead.png');
-
-    this.load.image('sky', 'assets/sky.png');
-    this.load.image('ground', 'assets/platform.png');
-    this.load.image('crate', 'assets/crate.jpg');
-}
-
-function platforms() {
-    this.matter.world.setBounds(0, -200, game.config.width, game.config.height + 200);
-
-    // Background image
-    this.add.image(400, 300, 'sky');
-
-    // Static obstacles
-    this.matter.add.image(200, 580, 'ground', null, { restitution: 0.6, isStatic: true });
-    this.matter.add.image(600, 580, 'ground', null, { restitution: 0.6, isStatic: true });
-
-    this.matter.add.image(600, 400, 'ground', null, { restitution: 0.6, isStatic: true });
-    this.matter.add.image(50, 250, 'ground', null, { restitution: 0.6, isStatic: true });
-    this.matter.add.image(750, 220, 'ground', null, { restitution: 0.6, isStatic: true });
-
-    player = new Player(this, 10, 10)
-
-    // Moving obstacles
-    for (let i=0; i< 10; i++) {
-        this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
-    }
-
-}
-
-function update(){
-
-   
-
-}
-
-
 
