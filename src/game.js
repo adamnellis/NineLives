@@ -24,14 +24,17 @@ export default new Phaser.Class({
         // Background image
         this.add.image(constants.game_width / 2, constants.game_height / 2, 'game-background');
 
-        // // Static obstacles
-        // this.matter.add.image(200, 580, 'ground', null, { restitution: 0.6, isStatic: true });
-        // this.matter.add.image(600, 580, 'ground', null, { restitution: 0.6, isStatic: true });
-        //
-        // this.matter.add.image(600, 400, 'ground', null, { restitution: 0.6, isStatic: true });
-        // this.matter.add.image(50, 250, 'ground', null, { restitution: 0.6, isStatic: true });
-        // this.matter.add.image(750, 220, 'ground', null, { restitution: 0.6, isStatic: true });
-        //
+        // Platforms
+        const windowsill_physics = { restitution: 0.6, isStatic: true };
+        this.matter.add.image(1028, 220, 'windowsill', null, windowsill_physics);
+        this.matter.add.image(1028, 513, 'windowsill', null, windowsill_physics);
+        this.matter.add.image(1376, 220, 'windowsill', null, windowsill_physics);
+        this.matter.add.image(1376, 513, 'windowsill', null, windowsill_physics);
+        this.matter.add.image(2166, 220, 'windowsill', null, windowsill_physics);
+        this.matter.add.image(2166, 513, 'windowsill', null, windowsill_physics);
+
+        // TODO: More platforms from the background
+
         // // Moving obstacles
         // for (let i=0; i< 10; i++) {
         //     this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');

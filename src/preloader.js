@@ -15,6 +15,7 @@ export default new Phaser.Class({
     {
         this.load.image('title', 'assets/Title.png');
         this.load.image('game-background', 'assets/background.png');
+        this.load.image('windowsill', 'assets/windowsill.png');
 
         this.load.image('logo', 'assets/logo.png');
         this.load.image('red-particle', 'assets/particles/red.png');
