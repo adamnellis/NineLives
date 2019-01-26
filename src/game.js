@@ -31,7 +31,12 @@ export default new Phaser.Class({
         this.matter.world.setBounds(physics_x_start, 0, constants.game_width - physics_x_start, constants.game_height - physics_y_end);
 
         // Background image
-        this.add.image(constants.game_width / 2, constants.game_height / 2, 'game-background');
+        let current_x = 0;
+        this.add.image(current_x + constants.background1_width / 2, constants.game_height / 2, 'game-background-1');
+        current_x += constants.background1_width;
+        this.add.image(current_x + constants.background2_width / 2, constants.game_height / 2, 'game-background-2');
+        current_x += constants.background2_width;
+        this.add.image(current_x + constants.background3_width / 2, constants.game_height / 2, 'game-background-3');
 
         // Platforms
         const invisible_objects = [];
