@@ -28,6 +28,7 @@ function preload () {
 
     this.load.image('sky', 'assets/sky.png');
     this.load.image('ground', 'assets/platform.png');
+    this.load.image('crate', 'assets/crate.jpg');
 }
 
 function demo () {
@@ -66,8 +67,10 @@ function demo () {
 }
 
 function platforms() {
+    // Background image
     this.add.image(400, 300, 'sky');
 
+    // Static obstacles
     const platforms = this.physics.add.staticGroup();
 
     platforms.create(400, 568, 'ground').setScale(2).refreshBody();
@@ -75,4 +78,19 @@ function platforms() {
     platforms.create(600, 400, 'ground');
     platforms.create(50, 250, 'ground');
     platforms.create(750, 220, 'ground');
+
+    // Moving obstacles
+    const crates = this.physics.add.group();
+
+    this.physics.add.collider(crates, platforms);
+    this.physics.add.collider(crates, crates);
+
+    for (let i=0; i< 20; i++) {
+        const crate = crates.create(Phaser.Math.Between(20, 700), 16, 'crate');
+        crate.setBounce(0.6);
+        crate.setDrag(0.7);
+        crate.setCollideWorldBounds(true);
+        crate.setVelocity(Phaser.Math.Between(-200, 200), 20);
+        crate.allowGravity = false;
+    }
 }
