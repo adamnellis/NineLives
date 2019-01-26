@@ -68,7 +68,9 @@ export default new Phaser.Class({
         }, this);
 
         this.kitten = new Kitten(this, physics_x_start + 100, 10, 'kitten');
+        this.kitten.velocity = constants.kittenVelocity;
         this.cat = new Cat(this, physics_x_start + 100, 30, 'cat');
+        this.cat.velocity = constants.catVelocity;
         this.car = new Car(this, constants.car_x, constants.car_y);
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
