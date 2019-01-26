@@ -8,6 +8,7 @@ export default class Car {
         this.sprite.setFixedRotation()
         this.scene.events.on("update", this.update, this);
 
+        this.sprite.custom_object = this;
 
         this.scene.anims.create({
             key: 'left',
