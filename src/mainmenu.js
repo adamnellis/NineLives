@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 
+import constants from './constants.js';
+
 export default new Phaser.Class({
 
     Extends: Phaser.Scene,
@@ -16,7 +18,7 @@ export default new Phaser.Class({
     {
         console.log('%c MainMenu ', 'background: green; color: white; display: block;');
 
-        this.add.image(400, 300, 'title');
+        this.add.image(constants.viewport_width / 2, constants.viewport_height / 2, 'title');
 
         // Wait a little before adding click handler, so that clicks from the game over screen don't trigger this
         setTimeout(() => {
