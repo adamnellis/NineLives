@@ -20,10 +20,17 @@ export default class Player {
         this.scene.events.on("update", this.update, this);
 
         this.cursors = this.createCursorKeys(this.scene.input.keyboard);
+
+
+        this.allowMoveLeft = true;
+        this.allowMoveRight = true;
+
     }
 
     update() {
         var cursors = this.scene.cursors;
+
+
 
         // Check if we are allowed to jump
         if (Math.abs(this.sprite.body.velocity.y) < 1e-6) {
@@ -40,12 +47,14 @@ export default class Player {
 
 
 
-        if (this.cursors.left.isDown)
+        if (this.cursors.left.isDown && this.allowMoveLeft)
         {
+            this.sprite.flipX = false;
             this.sprite.setVelocityX(-10);
         }
-        else if (this.cursors.right.isDown)
+        else if (this.cursors.right.isDown&& this.allowMoveRight)
         {
+            this.sprite.flipX = true;
             this.sprite.setVelocityX(10);
         }
         else
@@ -58,6 +67,10 @@ export default class Player {
             this.sprite.setVelocityY(-15);
         }
 
+        // Check if we are in the flashing animation state
+        if (this.flashing_animation_key) {
+            this.sprite.anims.play(this.flashing_animation_key, true);
+        }
 
     }
 
