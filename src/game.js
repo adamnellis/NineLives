@@ -68,7 +68,7 @@ export default new Phaser.Class({
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.player = new Player(this, physics_x_start + 100, 10);
-        this.car = new Car(this, 600, 600);
+        this.car = new Car(this, constants.car_x, constants.car_y);
 
 
         // Make camera follow the player

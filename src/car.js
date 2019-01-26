@@ -22,7 +22,7 @@ export default class Car {
     update() {
 
         this.sprite.anims.play('left', true);
-
+        this.sprite.setVelocityX(25);
     }
 
 
