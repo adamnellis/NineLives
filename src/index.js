@@ -1,5 +1,6 @@
 import 'phaser';
 
+
 import constants from './constants.js';
 import Preloader from './preloader.js';
 import MainMenu from './mainmenu.js';
