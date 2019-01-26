@@ -32,6 +32,7 @@ export default new Phaser.Class({
         this.matter.add.image(1376, 513, 'windowsill', null, windowsill_physics);
         this.matter.add.image(2166, 220, 'windowsill', null, windowsill_physics);
         this.matter.add.image(2166, 513, 'windowsill', null, windowsill_physics);
+        this.matter.add.image(1778, 321, 'door-top', null, windowsill_physics);
 
         // TODO: More platforms from the background
 
