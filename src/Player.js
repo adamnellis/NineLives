@@ -5,11 +5,9 @@ export default class Player {
     constructor(scene, x, y, sheet) {
         this.scene = scene;
 
-        // Create the animations we need from the player spritesheet
-        const anims = scene.anims;
-
         this.iterations_zero_velocity = 0;
         this.up_pressed_last_frame = false;
+
 
         // Create the physics-based sprite that we will move around and animate
         this.sprite = scene.matter.add.sprite(x, y, sheet);
@@ -20,7 +18,6 @@ export default class Player {
         this.scene.events.on("update", this.update, this);
 
         this.cursors = this.createCursorKeys(this.scene.input.keyboard);
-
 
         this.allowMoveLeft = true;
         this.allowMoveRight = true;
@@ -64,9 +61,13 @@ export default class Player {
 
         if (jump)
         {
-            this.sprite.setVelocityY(-15);
+            this.sprite.setVelocityY(-(this.velocity));
         }
 
+        // Check if we are in the flashing animation state
+        if (this.flashing_animation_key) {
+            this.sprite.anims.play(this.flashing_animation_key, true);
+        }
 
     }
 
