@@ -9,19 +9,19 @@ export default class Car {
         this.scene.events.on("update", this.update, this);
 
 
-        // this.scene.anims.create({
-        //     key: 'left',
-        //     frames: this.scene.anims.generateFrameNumbers('car', { start: 0, end: 2 }),
-        //     frameRate: 10,
-        //     repeat: 1
-        // });
+        this.scene.anims.create({
+            key: 'left',
+            frames: this.scene.anims.generateFrameNumbers('car', { start: 0, end: 2 }),
+            frameRate: 10,
+            repeat: 1
+        });
 
 
     }
 
     update() {
 
-     //   this.sprite.anims.play('left', true);
+        this.sprite.anims.play('left', true);
         this.sprite.setVelocityX(25);
     }
 
