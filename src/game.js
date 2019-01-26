@@ -22,20 +22,20 @@ export default new Phaser.Class({
         this.matter.world.setBounds(0, 0, constants.game_width, constants.game_height);
 
         // Background image
-        this.add.image(400, 300, 'sky');
+        this.add.image(constants.game_width / 2, constants.game_height / 2, 'game-background');
 
-        // Static obstacles
-        this.matter.add.image(200, 580, 'ground', null, { restitution: 0.6, isStatic: true });
-        this.matter.add.image(600, 580, 'ground', null, { restitution: 0.6, isStatic: true });
-
-        this.matter.add.image(600, 400, 'ground', null, { restitution: 0.6, isStatic: true });
-        this.matter.add.image(50, 250, 'ground', null, { restitution: 0.6, isStatic: true });
-        this.matter.add.image(750, 220, 'ground', null, { restitution: 0.6, isStatic: true });
-
-        // Moving obstacles
-        for (let i=0; i< 10; i++) {
-            this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
-        }
+        // // Static obstacles
+        // this.matter.add.image(200, 580, 'ground', null, { restitution: 0.6, isStatic: true });
+        // this.matter.add.image(600, 580, 'ground', null, { restitution: 0.6, isStatic: true });
+        //
+        // this.matter.add.image(600, 400, 'ground', null, { restitution: 0.6, isStatic: true });
+        // this.matter.add.image(50, 250, 'ground', null, { restitution: 0.6, isStatic: true });
+        // this.matter.add.image(750, 220, 'ground', null, { restitution: 0.6, isStatic: true });
+        //
+        // // Moving obstacles
+        // for (let i=0; i< 10; i++) {
+        //     this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
+        // }
 
         // When user clicks anywhere, randomly decide if they won or lost!
         this.input.once('pointerup', function () {
@@ -57,6 +57,10 @@ export default new Phaser.Class({
 
 
 
+        // Make camera follow the player
+        this.cameras.main.setBounds(0, 0, constants.game_width, constants.game_height);
+        this.cameras.main.startFollow(this.player.sprite);
+        this.cameras.main.setBackgroundColor('#858585');
     }
 
 
