@@ -9,6 +9,7 @@ import Lose from './lose.js';
 
 var config = {
     type: Phaser.AUTO,
+    backgroundColor: '#858585',
     parent: 'phaser-example',
     width: constants.game_width,
     height: constants.game_height,
