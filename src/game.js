@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+
 import Player from "./player.js";
 import Cat from "./cat.js";
 import Car from "./car.js";

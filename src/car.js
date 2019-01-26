@@ -11,7 +11,7 @@ export default class Car {
 
         this.scene.anims.create({
             key: 'left',
-            frames: this.scene.anims.generateFrameNumbers('car', { start: 0, end: 1 }),
+            frames: this.scene.anims.generateFrameNumbers('car', { start: 0, end: 2 }),
             frameRate: 10,
             repeat: 1
         });
