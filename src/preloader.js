@@ -14,6 +14,11 @@ export default new Phaser.Class({
     preload: function ()
     {
         this.load.image('title', 'assets/Title.png');
+        this.load.image('game-background', 'assets/background.png');
+        this.load.image('windowsill', 'assets/invisible/windowsill.png');
+        this.load.image('door-top', 'assets/invisible/doorTop.png');
+        this.load.image('garage-side', 'assets/invisible/garageSide.png');
+        this.load.image('garage-top', 'assets/invisible/garageTop.png');
 
         this.load.image('logo', 'assets/logo.png');
         this.load.image('red-particle', 'assets/particles/red.png');
@@ -22,13 +27,25 @@ export default new Phaser.Class({
         this.load.image('sky', 'assets/sky.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('crate', 'assets/crate.jpg');
+        this.load.image(
+            "player",
+            "assets/fullKitten.png",
+            // {
+            //     frameWidth: 32,
+            //     frameHeight: 32,
+            //     margin: 1,
+            //     spacing: 2
+            // }
+        );
     },
+
 
     create: function ()
     {
         console.log('%c Preloader ', 'background: green; color: white; display: block;');
 
         this.scene.start('mainmenu');
+
     }
 
 });

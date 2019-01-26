@@ -1,4 +1,5 @@
 import 'phaser';
+import Player from "./player.js";
 
 import constants from './constants.js';
 import Preloader from './preloader.js';
@@ -11,15 +12,17 @@ var config = {
     type: Phaser.AUTO,
     backgroundColor: '#858585',
     parent: 'phaser-example',
-    width: constants.game_width,
-    height: constants.game_height,
+    width: constants.viewport_width,
+    height: constants.viewport_height,
     physics: {
         default: 'matter',
         matter: {
             debug: false,
         }
     },
+
     scene: [ Preloader, MainMenu, Game, Win, Lose ]
 };
 
 var game = new Phaser.Game(config);
+
