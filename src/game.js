@@ -22,13 +22,13 @@ export default new Phaser.Class({
 
     create: function ()
     {
-        console.log('%c Game ', 'background: green; color: white; display: block;');
 
-        this.matter.world.enabled = true;
+
+        this.physics.world.enabled = true;
 
         const physics_x_start = 210;
         const physics_y_end = 40;
-        this.matter.world.setBounds(physics_x_start, 0, constants.game_width - physics_x_start, constants.game_height - physics_y_end);
+        this.physics.world.setBounds(physics_x_start, 0, constants.game_width - physics_x_start, constants.game_height - physics_y_end);
 
         // Background image
         this.add.image(constants.game_width / 2, constants.game_height / 2, 'game-background');
@@ -36,15 +36,15 @@ export default new Phaser.Class({
         // Platforms
         const invisible_objects = [];
         const windowsill_physics = { restitution: 0.6, isStatic: true };
-        invisible_objects.push(this.matter.add.image(1028, 220, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1028, 513, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1376, 220, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1376, 513, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(2166, 220, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(2166, 513, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1778, 321, 'door-top', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(2554, 534, 'garage-side', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(3065, 323, 'garage-top', null, windowsill_physics));
+        invisible_objects.push(this.physics.add.image(1028, 220, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.physics.add.image(1028, 513, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.physics.add.image(1376, 220, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.physics.add.image(1376, 513, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.physics.add.image(2166, 220, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.physics.add.image(2166, 513, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.physics.add.image(1778, 321, 'door-top', null, windowsill_physics));
+        invisible_objects.push(this.physics.add.image(2554, 534, 'garage-side', null, windowsill_physics));
+        invisible_objects.push(this.physics.add.image(3065, 323, 'garage-top', null, windowsill_physics));
 
         for (const object of invisible_objects) {
             object.alpha = 0; //0.8; // Set to 0.8 for debugging, and 0 for production
@@ -54,7 +54,7 @@ export default new Phaser.Class({
 
         // // Moving obstacles
         // for (let i=0; i< 10; i++) {
-        //     this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
+        //     this.physics.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
         // }
 
         this.kitten = new Kitten(this, physics_x_start + 100, 10, 'kitten');
@@ -63,7 +63,7 @@ export default new Phaser.Class({
         this.cat.velocity = constants.catVelocity;
         this.car = new Car(this, constants.car_x, constants.car_y);
 
-        this.dot = this.matter.add.sprite(700, 700, 'dot');
+        this.dot = this.physics.add.sprite(700, 700, 'dot');
         this.dot.visible = false;
 
         // Make camera follow the kitten
@@ -73,7 +73,7 @@ export default new Phaser.Class({
 
 
         // Check for collisions
-        this.matter.world.on('collisionstart', (event, bodyA, bodyB) => {
+        this.physics.world.on('collisionstart', (event, bodyA, bodyB) => {
             // Find out if any of our custom objects collided
             let custom_object_a = bodyA.gameObject;
             if (custom_object_a !== null) {
@@ -103,15 +103,15 @@ export default new Phaser.Class({
                 cat.do_flashing_animation();
                 car.stop_animation();
                 this.cat_flash_timer = 300;
-                this.matter.world.enabled = false;
+                this.physics.world.enabled = false;
             }
         });
         this.cat_flash_timer = null;
 
         this.events.on("update", this.update, this);
 
-        console.log(this.matter.world)
-        console.log(this.matter)
+        console.log(this.physics.world)
+        console.log(this.physics)
     },
 
     update: function() {

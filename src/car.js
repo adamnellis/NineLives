@@ -3,9 +3,8 @@ export default class Car {
 
         this.scene = scene;
 
-        this.sprite = scene.matter.add.sprite(x, y, "car");
-
-        this.sprite.setFixedRotation()
+        this.sprite = scene.physics.add.sprite(x, y, "car");
+        this.sprite.setCollideWorldBounds(true);
         this.scene.events.on("update", this.update, this);
 
         this.sprite.custom_object = this;

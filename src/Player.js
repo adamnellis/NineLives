@@ -8,13 +8,12 @@ export default class Player {
         this.iterations_zero_velocity = 0;
         this.up_pressed_last_frame = false;
 
-
         // Create the physics-based sprite that we will move around and animate
-        this.sprite = scene.matter.add.sprite(x, y, sheet);
-
+        this.sprite = scene.physics.add.sprite(x, y, sheet);
+        this.sprite.setCollideWorldBounds(true);
         this.sprite.custom_object = this;
 
-        this.sprite.setFixedRotation()
+       // this.sprite.setFixedRotation()
         this.scene.events.on("update", this.update, this);
 
         this.cursors = this.createCursorKeys(this.scene.input.keyboard);
@@ -47,12 +46,12 @@ export default class Player {
         if (this.cursors.left.isDown && this.allowMoveLeft)
         {
             this.sprite.flipX = false;
-            this.sprite.setVelocityX(-10);
+            this.sprite.setVelocityX(-180);
         }
         else if (this.cursors.right.isDown&& this.allowMoveRight)
         {
             this.sprite.flipX = true;
-            this.sprite.setVelocityX(10);
+            this.sprite.setVelocityX(180);
         }
         else
         {

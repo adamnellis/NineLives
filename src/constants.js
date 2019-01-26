@@ -6,7 +6,7 @@ export default {
     viewport_height: 800,
     car_y: 629,
     car_x: 600,
-    kittenVelocity: 15,
-    catVelocity: 10
+    kittenVelocity: 800,
+    catVelocity: 500
 
 }

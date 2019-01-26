@@ -15,9 +15,10 @@ var config = {
     width: constants.viewport_width,
     height: constants.viewport_height,
     physics: {
-        default: 'matter',
-        matter: {
-            debug: true,
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 1000 },
+            debug: true
         }
     },
 
