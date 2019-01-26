@@ -16,15 +16,19 @@ export default class Car {
             frameRate: 10,
             repeat: 1
         });
+        this.run_animation = true;
 
 
     }
 
     update() {
-
-        this.sprite.anims.play('left', true);
+        if (this.run_animation) {
+            this.sprite.anims.play('left', true);
+        }
         this.sprite.setVelocityX(25);
     }
 
-
+    stop_animation() {
+        this.run_animation = false;
+    }
 }

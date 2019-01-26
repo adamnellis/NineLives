@@ -24,6 +24,8 @@ export default new Phaser.Class({
     {
         console.log('%c Game ', 'background: green; color: white; display: block;');
 
+        this.matter.world.enabled = true;
+
         const physics_x_start = 210;
         const physics_y_end = 40;
         this.matter.world.setBounds(physics_x_start, 0, constants.game_width - physics_x_start, constants.game_height - physics_y_end);
@@ -55,18 +57,6 @@ export default new Phaser.Class({
         //     this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
         // }
 
-        // When user clicks anywhere, randomly decide if they won or lost!
-        this.input.once('pointerup', function () {
-
-            if (Math.random() >= 0.5) {
-                this.scene.start('win');
-            }
-            else {
-                this.scene.start('lose');
-            }
-
-        }, this);
-
         this.kitten = new Kitten(this, physics_x_start + 100, 10, 'kitten');
         this.kitten.velocity = constants.kittenVelocity;
         this.cat = new Cat(this, physics_x_start + 100, 30, 'cat');
@@ -83,7 +73,7 @@ export default new Phaser.Class({
 
 
         // Check for collisions
-        this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
+        this.matter.world.on('collisionstart', (event, bodyA, bodyB) => {
             // Find out if any of our custom objects collided
             let custom_object_a = bodyA.gameObject;
             if (custom_object_a !== null) {
@@ -96,15 +86,35 @@ export default new Phaser.Class({
             // console.log('collision', custom_object_a, custom_object_b);
 
             // Check for player-car collisions
-            if ((custom_object_a instanceof Player && custom_object_b instanceof Car) ||
-                (custom_object_b instanceof Player && custom_object_a instanceof Car)) {
-                console.log('Collision between player and car');
+            if (((custom_object_a instanceof Kitten || custom_object_a instanceof Cat) && custom_object_b instanceof Car) ||
+                ((custom_object_b instanceof Kitten || custom_object_b instanceof Cat) && custom_object_a instanceof Car)) {
+                let cat = null;
+                let car = null;
+                if (custom_object_a instanceof Kitten || custom_object_a instanceof Cat) {
+                    cat = custom_object_a;
+                    car = custom_object_b;
+                }
+                else {
+                    cat = custom_object_b;
+                    car = custom_object_a;
+                }
+
+                // A player hit a car, so do the death animation
+                cat.do_flashing_animation();
+                car.stop_animation();
+                this.cat_flash_timer = 300;
+                this.matter.world.enabled = false;
             }
         });
+        this.cat_flash_timer = null;
+
+        this.events.on("update", this.update, this);
+
+        console.log(this.matter.world)
+        console.log(this.matter)
     },
 
-    update: function(){
-
+    update: function() {
         var catX = this.cat.sprite.x;
         var kittenX = this.kitten.sprite.x;
 
@@ -127,12 +137,15 @@ export default new Phaser.Class({
             this.cat.allowMoveLeft = true;
         }
 
-
-
-
-
-
+        if (this.cat_flash_timer !== null) {
+            // We are in a cat death animation
+            if (this.cat_flash_timer < 0) {
+                // Animation finished
+                this.cat_flash_timer = null
+                console.log('change scene')
+                this.scene.start('lose', { death_type: 'car' });
+            }
+            this.cat_flash_timer -= 1;
+        }
     }
-
-
 });

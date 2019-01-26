@@ -7,7 +7,12 @@ export default class Cat extends Player{
         super(scene, x, y, sheet);
         this.cursors = this.createCursorKeys(this.scene.input.keyboard);
 
-
+        this.scene.anims.create({
+            key: 'cat_flash',
+            frames: this.scene.anims.generateFrameNumbers('catAnimation', { start: 0, end: 1 }),
+            frameRate: 3,
+            repeat: 1
+        });
     }
 
 
@@ -24,4 +29,8 @@ export default class Cat extends Player{
         });
     }
 
+    do_flashing_animation() {
+        this.flashing_animation_key = 'cat_flash';
+        this.sprite.texture = "catAnimation";
+    }
 }
