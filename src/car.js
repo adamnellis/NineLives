@@ -34,21 +34,13 @@ export default class Car {
     }
 
     update() {
-        if (this.run_animation) {
-            this.sprite.anims.play('left', true);
-            this.sprite.setVelocityX(this.velocity);
-        }
+
 
         try {
-            // if(this.sprite.x < 4000 && this.sprite.x > 2050 && this.leftDirection){
-            //     this.leftDirection = false;
-            //     this.sprite.setFlipX(false);
-            //     this.velocity = - this.velocity;
-            // } else if(this.sprite.x > constants.carStop && this.leftDirection == false){
-            //     this.leftDirection = true;
-            //     this.sprite.setFlipX(true);
-            //     this.velocity = - this.velocity;
-            // }
+            if (this.run_animation) {
+                this.sprite.anims.play('left', true);
+                this.sprite.setVelocityX(this.velocity);
+            }
         }catch (e) {
 
         }
@@ -61,9 +53,6 @@ export default class Car {
     }
 
     flipCar(left){
-
-
-        debugger;
 
         if(this.leftDirection && left){
             this.leftDirection = false;

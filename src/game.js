@@ -53,7 +53,7 @@ export default new Phaser.Class({
         this.matter.add.image(1381, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1782, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(2830, 488, 'garage-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(3295, 605, 'smallblock', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(3295, 595, 'smallblock', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
         // 2. basic jumping
         this.matter.add.image(6740, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
@@ -91,12 +91,12 @@ export default new Phaser.Class({
         // TODO: More platforms from the background
 
         // // Moving obstacles
-        let cans = [[1006, 476],[1433, 138],[1423, 138],[3311,714],[6704,428],[1382,310],[6585,713],[7278,153],[8399,428],[9064,153],[6831,428],[8546,428],[9230,153],[11827,228],[16659,173],[16492,173]]
+        let cans = [[1006, 476],[1433, 138],[1423, 138],[6704,428],[1382,310],[6585,713],[7278,153],[8399,428],[9064,153],[6831,428],[8546,428],[9230,153],[11827,228],[16659,173],[16492,173]]
         for(let c of cans){
             this.matter.add.image(c[0], c[1], 'can');
         }
 
-        let yarn = [[1166,510],[13033,428],[14143,428]]
+        let yarn = [[1066,510],[13033,428],[14143,428]]
         for(let y of yarn){
            var ball = this.matter.add.image(y[0], y[1], 'yarn');
            ball.setCircle();
@@ -220,21 +220,21 @@ export default new Phaser.Class({
 
         if(this.dot.x > constants.carSpawn && this.carSpawed == false){
 
-              // this.carSpawed = true;
-              // this.car = new Car(this, constants.car_x, constants.car_y);
+              this.carSpawed = true;
+              this.car = new Car(this, constants.car_x, constants.car_y);
 
         }
 
         if(this.dot.x > constants.carSpawn2 && this.carSpawed2 == false){
 
-           // this.carSpawed2 = true;
-           //  this.car2 = new Car(this, constants.car_x2, constants.car_y2);
+           this.carSpawed2 = true;
+            this.car2 = new Car(this, constants.car_x2, constants.car_y2);
 
         }
 
-        // if(this.dot.x > constants.carStop){
-        //      this.car2.stop();
-        // }
+        if(this.dot.x > constants.carStop){
+             this.car2.stop();
+        }
 
         if(this.carSpawed2){
 
