@@ -1,10 +1,11 @@
 import Player from "./Player";
+import MultiKey from "./multi-key";
+import Phaser from "phaser";
 
 export default class Kitten extends Player{
 
     constructor(scene, x, y, sheet) {
-        super(scene, x, y, sheet, 95, 70);
-        this.cursors = this.createCursorKeys(this.scene.input.keyboard);
+        super(scene, x, y, sheet, 95, 70, 20);
 
         this.scene.anims.create({
             key: 'kitten_flash',
@@ -19,21 +20,14 @@ export default class Kitten extends Player{
             frameRate: 0,
             repeat: 0
         });
+        const { LEFT, RIGHT, UP, A, D, W } = Phaser.Input.Keyboard.KeyCodes;
+        this.leftInput = new MultiKey(scene, [A]);
+        this.rightInput = new MultiKey(scene, [D]);
+        this.jumpInput = new MultiKey(scene, [W]);
     }
 
 
 
-    createCursorKeys (keyboard)
-    {
-        return keyboard.addKeys({
-            up: Phaser.Input.Keyboard.KeyCodes.W,
-            down: Phaser.Input.Keyboard.KeyCodes.S,
-            left: Phaser.Input.Keyboard.KeyCodes.A,
-            right: Phaser.Input.Keyboard.KeyCodes.D,
-            space: Phaser.Input.Keyboard.KeyCodes.CTRL,
-            shift: Phaser.Input.Keyboard.KeyCodes.SHIFT
-        });
-    }
 
     do_flashing_animation() {
         this.flashing_animation_key = 'kitten_flash';
