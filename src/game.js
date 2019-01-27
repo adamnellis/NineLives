@@ -75,19 +75,15 @@ export default new Phaser.Class({
         // }
 
 
-         var crate = this.matter.add.image(2545, 324, 'crate');
-        crate.setScale(3)
+         var crate = this.matter.add.image(2575, 324, 'crate');
+        crate.setScale(2)
 
-        console.log('crate')
-        console.log(crate)
-        //crate.scale.setTo(15,15)
 
 
         this.kitten = new Kitten(this, constants.physics_x_start + 100, 10, 'kittenAnimation');
         this.kitten.velocity = constants.kittenVelocity;
         this.cat = new Cat(this, constants.physics_x_start + 100, 30, 'catAnimation');
         this.cat.velocity = constants.catVelocity;
-        //this.car = new Car(this, constants.car_x, constants.car_y);
 
         // Foreground images
         this.add.image(2865, 568, 'garage-front');
@@ -186,14 +182,14 @@ export default new Phaser.Class({
 
         if(this.dot.x > constants.carSpawn && this.carSpawed == false){
 
-             // this.carSpawed = true;
-             // this.car = new Car(this, constants.car_x, constants.car_y);
+              // this.carSpawed = true;
+              // this.car = new Car(this, constants.car_x, constants.car_y);
 
         }
 
         if(this.dot.x > constants.carSpawn2 && this.carSpawed2 == false){
 
-            this.carSpawed2 = true;
+           this.carSpawed2 = true;
             this.car2 = new Car(this, constants.car_x2, constants.car_y2);
 
         }
@@ -202,6 +198,16 @@ export default new Phaser.Class({
             this.car2.stop();
         }
 
+        if(this.carSpawed2){
+
+
+
+            if(this.dot.x - this.car2.sprite.x > constants.carFlipDistance ){
+                this.car2.flipCar(true);
+            } else if(this.car2.sprite.x - this.dot.x > constants.carFlipDistance){
+                this.car2.flipCar(false);
+            }
+        }
 
 
         if (this.cat_flash_timer !== null) {

@@ -26,8 +26,9 @@ export default {
     carSpawn2: 6450,
     carStop: 20600,
     catDistanceOffset : 250,
-    carVelocity : 25,
+    carVelocity : 15,
     physics_x_start : 210,
-    physics_y_end : 40
+    physics_y_end : 40,
+    carFlipDistance : 3000
 
 }

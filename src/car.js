@@ -17,8 +17,6 @@ export default class Car {
 
         this.sprite.setFlipX(true);
 
-        this.sprite.setCollidesWith([ 1,2 ]);
-
         this.sprite.setFixedRotation()
         this.scene.events.on("update", this.update, this);
 
@@ -41,19 +39,41 @@ export default class Car {
             this.sprite.setVelocityX(this.velocity);
         }
 
+        try {
+            // if(this.sprite.x < 4000 && this.sprite.x > 2050 && this.leftDirection){
+            //     this.leftDirection = false;
+            //     this.sprite.setFlipX(false);
+            //     this.velocity = - this.velocity;
+            // } else if(this.sprite.x > constants.carStop && this.leftDirection == false){
+            //     this.leftDirection = true;
+            //     this.sprite.setFlipX(true);
+            //     this.velocity = - this.velocity;
+            // }
+        }catch (e) {
 
-        if(this.sprite.x < 4000 && this.sprite.x > 2050 && this.leftDirection){
-            this.leftDirection = false;
-            this.sprite.setFlipX(false);
-            this.velocity = - this.velocity;
-        } else if(this.sprite.x > constants.carStop && this.leftDirection == false){
-            this.leftDirection = true;
-            this.sprite.setFlipX(true);
-            this.velocity = - this.velocity;
         }
 
 
 
+
+
+
+    }
+
+    flipCar(left){
+
+
+        debugger;
+
+        if(this.leftDirection && left){
+            this.leftDirection = false;
+            this.sprite.setFlipX(false);
+            this.velocity = - this.velocity;
+        } else if(this.leftDirection == false && left == false){
+            this.leftDirection = true;
+            this.sprite.setFlipX(true);
+            this.velocity = - this.velocity;
+        }
     }
 
     stop_animation() {
