@@ -25,7 +25,11 @@ export default new Phaser.Class({
     {
         console.log('%c Game ', 'background: green; color: white; display: block;');
 
+        // Clean up after restarting scene
         this.matter.world.enabled = true;
+        if (this.car) {
+            this.car.sprite.destroy()
+        }
 
         this.carSpawed = false
         const physics_x_start = 210;
@@ -134,9 +138,7 @@ export default new Phaser.Class({
             this.unsubscribePlayerCollide();
 
             this.kitten.freeze();
-            const cam = this.cameras.main;
-            cam.fade(250, 0, 0, 0);
-            cam.once("camerafadeoutcomplete", () => this.scene.restart());
+            this.cat.freeze();
         }
 
 
@@ -153,7 +155,7 @@ export default new Phaser.Class({
             this.kitten.allowMoveLeft = false;
             this.cat.allowMoveRight = false;
             this.cat.allowMoveLeft = true;
- 1       } else if(kittenX - catX > constants.viewport_width - constants.catDistanceOffset){
+        } else if(kittenX - catX > constants.viewport_width - constants.catDistanceOffset){
             this.kitten.allowMoveRight = false;
             this.kitten.allowMoveLeft = true;
             this.cat.allowMoveRight = true;
@@ -176,9 +178,12 @@ export default new Phaser.Class({
             // We are in a cat death animation
             if (this.cat_flash_timer < 0) {
                 // Animation finished
-                this.cat_flash_timer = null
-                console.log('change scene')
-                this.kitten.destroy()
+                this.cat_flash_timer = null;
+                const cam = this.cameras.main;
+                // cam.fade(250, 0, 0, 0);
+                // cam.once("camerafadeoutcomplete", () => {
+                //     this.scene.start('lose', { death_type: 'car' });
+                // });
                 this.scene.start('lose', { death_type: 'car' });
             }
             this.cat_flash_timer -= 1;

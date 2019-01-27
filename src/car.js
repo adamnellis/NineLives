@@ -29,8 +29,8 @@ export default class Car {
     update() {
         if (this.run_animation) {
             this.sprite.anims.play('left', true);
+            this.sprite.setVelocityX(25);
         }
-        this.sprite.setVelocityX(25);
     }
 
     stop_animation() {

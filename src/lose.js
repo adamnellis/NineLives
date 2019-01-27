@@ -40,10 +40,7 @@ export default new Phaser.Class({
         }
         this.current_life -= 1;
 
-        console.log(this.lives)
-        this.lives[this.current_life] = 'X';
-        console.log(this.lives)
-        console.log('---')
+        this.lives[this.current_life] = '🚗';
 
         this.text = this.add.text(100, 200, this.lives.join(''), {font: '30px Courier', fill: '#ff0000'});
 
