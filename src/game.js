@@ -45,6 +45,7 @@ export default new Phaser.Class({
         this.add.image(current_x + constants.background3_width / 2, constants.game_height / 2, 'game-background-3');
 
         // Platforms
+
         this.matter.add.image(1033, 224, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1033, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1381, 223, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
@@ -58,7 +59,6 @@ export default new Phaser.Class({
         this.matter.add.image(3090, 450, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
         
-
         // TODO: More platforms from the background
 
         // // Moving obstacles
@@ -67,11 +67,19 @@ export default new Phaser.Class({
         // }
 
 
+         var crate = this.matter.add.image(2545, 324, 'crate');
+        crate.setScale(3)
+
+        console.log('crate')
+        console.log(crate)
+        //crate.scale.setTo(15,15)
+
+
         this.kitten = new Kitten(this, physics_x_start + 100, 10, 'kittenAnimation');
         this.kitten.velocity = constants.kittenVelocity;
         this.cat = new Cat(this, physics_x_start + 100, 30, 'catAnimation');
         this.cat.velocity = constants.catVelocity;
-       // this.car = new Car(this, constants.car_x, constants.car_y);
+        //this.car = new Car(this, constants.car_x, constants.car_y);
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
         this.dot.visible = false;
@@ -166,8 +174,10 @@ export default new Phaser.Class({
         }
 
         if(this.dot.x > constants.carSpawn && this.carSpawed == false){
+
             // this.carSpawed = true;
             // this.car = new Car(this, constants.car_x, constants.car_y);
+
         }
 
 
