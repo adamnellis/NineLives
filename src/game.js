@@ -85,7 +85,7 @@ export default new Phaser.Class({
         // 4. street end
         this.matter.add.image(21410, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(21810, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(24650, 528, 'garage', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(24580, 528, 'garage', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
 
         // TODO: More platforms from the background
