@@ -34,7 +34,7 @@ export default new Phaser.Class({
         this.carSpawed = false
         this.carSpawed2 = false
 
-        this.matter.world.setBounds(-1000, 0, constants.game_width - constants.physics_x_start, constants.game_height - constants.physics_y_end);
+        this.matter.world.setBounds(-1000, 0, constants.game_width + 1000 - 40, constants.game_height - constants.physics_y_end);
 
         // Background image
         let current_x = 0;
@@ -261,6 +261,16 @@ export default new Phaser.Class({
                 this.scene.start('lose', { death_type: 'car' });
             }
             this.cat_flash_timer -= 1;
+        }
+
+        // Check if got to the end of the level
+        if (this.dot.x > 34500) {
+            const cam = this.cameras.main;
+            cam.fade(2500, 255, 255, 255);
+            cam.once("camerafadeoutcomplete", () => {
+                this.scene.stop()
+                this.scene.start('win');
+            });
         }
     }
 });
