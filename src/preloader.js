@@ -30,10 +30,9 @@ export default new Phaser.Class({
 
         this.load.spritesheet('car', 'assets/car.png',
             { frameWidth: 691, frameHeight: 259 });
-        this.load.image("kitten", "assets/fullKitten.png");
-        this.load.image("cat", "assets/fullCat.png");
-        this.load.spritesheet("kittenAnimation", "assets/fullKitten2.png", { frameWidth: 118, frameHeight: 124 });
-        this.load.spritesheet("catAnimation", "assets/fullCat2.png", { frameWidth: 119, frameHeight: 194 });
+      
+        this.load.spritesheet("kittenAnimation", "assets/fullKitten2.png", { frameWidth: 118, frameHeight: 140 });
+        this.load.spritesheet("catAnimation", "assets/fullCat2.png", { frameWidth: 119, frameHeight: 220 });
         this.load.image("dot", "assets/dot.png");
     },
 

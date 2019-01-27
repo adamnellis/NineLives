@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import MultiKey from "./multi-key.js";
 
 export default class Player {
-    constructor(scene, x, y, sheet) {
+    constructor(scene, x, y, sheet, height, width) {
         this.scene = scene;
 
         this.iterations_zero_velocity = 0;
@@ -14,13 +14,21 @@ export default class Player {
 
         this.sprite.custom_object = this;
 
-        this.sprite.setFixedRotation()
+        
         this.scene.events.on("update", this.update, this);
 
         this.cursors = this.createCursorKeys(this.scene.input.keyboard);
 
         this.allowMoveLeft = true;
         this.allowMoveRight = true;
+
+        this.sprite.setBody({
+            type: 'rectangle',
+            width: width,
+            height: height
+        });
+
+        this.sprite.setFixedRotation()
 
     }
 
