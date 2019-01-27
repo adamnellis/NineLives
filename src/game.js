@@ -32,6 +32,7 @@ export default new Phaser.Class({
         }
 
         this.carSpawed = false
+        this.carSpawed2 = false
 
         this.matter.world.setBounds(-1000, 0, constants.game_width - constants.physics_x_start, constants.game_height - constants.physics_y_end);
 
@@ -92,23 +93,21 @@ export default new Phaser.Class({
         // }
 
 
-         var crate = this.matter.add.image(2545, 324, 'crate');
-        crate.setScale(3)
-
-        console.log('crate')
-        console.log(crate)
-        //crate.scale.setTo(15,15)
+         var crate = this.matter.add.image(2575, 324, 'crate');
+        crate.setScale(2)
+        var crate2 = this.matter.add.image(2575, 384, 'crate');
+        crate2.setScale(2)
 
 
         this.kitten = new Kitten(this, 250, 720, 'kittenAnimation');
         this.kitten.velocity = constants.kittenVelocity;
         this.cat = new Cat(this, 600, 690, 'catAnimation');
         this.cat.velocity = constants.catVelocity;
-        //this.car = new Car(this, constants.car_x, constants.car_y);
 
         // Foreground images
         this.add.image(200, 680, 'cardboard-box');
         this.add.image(2865, 568, 'garage-front');
+        this.add.image(17820, 203, 'fancy-building-top');
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
         this.dot.visible = false;
@@ -204,11 +203,32 @@ export default new Phaser.Class({
 
         if(this.dot.x > constants.carSpawn && this.carSpawed == false){
 
-             this.carSpawed = true;
-             this.car = new Car(this, constants.car_x, constants.car_y);
+              // this.carSpawed = true;
+              // this.car = new Car(this, constants.car_x, constants.car_y);
 
         }
 
+        if(this.dot.x > constants.carSpawn2 && this.carSpawed2 == false){
+
+           this.carSpawed2 = true;
+            this.car2 = new Car(this, constants.car_x2, constants.car_y2);
+
+        }
+
+        if(this.dot.x > constants.carStop){
+            this.car2.stop();
+        }
+
+        if(this.carSpawed2){
+
+
+
+            if(this.dot.x - this.car2.sprite.x > constants.carFlipDistance ){
+                this.car2.flipCar(true);
+            } else if(this.car2.sprite.x - this.dot.x > constants.carFlipDistance){
+                this.car2.flipCar(false);
+            }
+        }
 
 
         if (this.cat_flash_timer !== null) {
