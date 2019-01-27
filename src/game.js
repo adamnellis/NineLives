@@ -262,5 +262,15 @@ export default new Phaser.Class({
             }
             this.cat_flash_timer -= 1;
         }
+
+        // Check if got to the end of the level
+        if (this.dot.x > 34500) {
+            const cam = this.cameras.main;
+            cam.fade(2500, 255, 255, 255);
+            cam.once("camerafadeoutcomplete", () => {
+                this.scene.stop()
+                this.scene.start('win');
+            });
+        }
     }
 });

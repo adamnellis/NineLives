@@ -16,7 +16,11 @@ export default new Phaser.Class({
     {
         console.log('%c Winner! ', 'background: green; color: white; display: block;');
 
-        this.add.text(100, 200, '🎉🎉🎉😺😺😺😺😺😺😺😺😺🎉🎉🎉', { font: '30px Courier', fill: '#00ff00' });
+        this.add.image(600, 400, 'win-background');
+
+        this.add.text(200, 200, '🎉🎉🎉😺😺😺😺😺😺😺😺😺🎉🎉🎉', {font: '40px Courier', fill: '#ff0000'});
+
+        this.add.image(600, 500, 'end-house');
 
         this.input.once('pointerup', function (event) {
 
