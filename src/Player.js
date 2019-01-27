@@ -125,7 +125,6 @@ export default class Player {
 
         console.log('cat')
         console.log(this.sprite.x);
-        console.log(constants.physics_x_start)
 
         if (isLeftKeyDown && !(isInAir && this.isTouching.left) && this.allowMoveLeft && !tooLeft) {
             this.sprite.setVelocityX(-moveForce);
