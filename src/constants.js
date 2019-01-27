@@ -19,6 +19,8 @@ export default {
     cat_x : 450,
     cat_y : 700,
     kitten_x : 400,
-    kitten_y : 700
+    kitten_y : 700,
+    carSpawn: 1400,
+    catDistanceOffset : 250
 
 }
