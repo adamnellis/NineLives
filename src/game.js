@@ -73,6 +73,17 @@ export default new Phaser.Class({
         this.matter.add.image(13665, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(14145, 515, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
+        // 3. Cinema fun
+        this.matter.add.image(16080, 260, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(16595, 260, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(19050, 260, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(19570, 260, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        
+        // 4. street end
+        this.matter.add.image(21410, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(21800, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+
+
         // TODO: More platforms from the background
 
         // // Moving obstacles
