@@ -43,15 +43,15 @@ export default new Phaser.Class({
         // Platforms
         const invisible_objects = [];
         const windowsill_physics = { restitution: 0.6, isStatic: true };
-        invisible_objects.push(this.matter.add.image(1028, 220, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1028, 513, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1376, 220, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1376, 513, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(2166, 220, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(2166, 513, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1778, 321, 'door-top', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(2554, 534, 'garage-side', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(3065, 323, 'garage-top', null, windowsill_physics));
+        invisible_objects.push(this.matter.add.image(1023, 224, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.matter.add.image(1023, 518, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.matter.add.image(1371, 223, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.matter.add.image(1371, 517, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.matter.add.image(2161, 224, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.matter.add.image(2160, 516, 'windowsill', null, windowsill_physics));
+        invisible_objects.push(this.matter.add.image(1772, 324, 'door-top', null, windowsill_physics));
+        invisible_objects.push(this.matter.add.image(2547, 535, 'garage-side', null, windowsill_physics));
+        invisible_objects.push(this.matter.add.image(3059, 328, 'garage-top', null, windowsill_physics));
 
         for (const object of invisible_objects) {
             object.alpha = 0; //0.8; // Set to 0.8 for debugging, and 0 for production
