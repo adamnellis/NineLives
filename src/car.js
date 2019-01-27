@@ -4,6 +4,11 @@ export default class Car {
         this.scene = scene;
 
         this.sprite = scene.matter.add.sprite(x, y, "car");
+        this.sprite.setBody({
+            type: 'rectangle',
+            width: 550,
+            height: 128
+        });
 
         this.sprite.setFixedRotation()
         this.scene.events.on("update", this.update, this);
