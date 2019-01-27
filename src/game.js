@@ -45,16 +45,27 @@ export default new Phaser.Class({
 
         // Platforms
 
+        // 1. before image.
         this.matter.add.image(1033, 224, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1033, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1381, 223, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1381, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1782, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        // this.matter.add.image(2557, 535, 'garage-side', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(2830, 488, 'garage-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(3295, 610, 'smallblock', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
-        
+        // basic jumping
+        this.matter.add.image(6740, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(6740, 515, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(7295, 240, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(7295, 515, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(7850, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(8460, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(8460, 515, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(9150, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(9150, 515, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+
+
         // TODO: More platforms from the background
 
         // // Moving obstacles
@@ -71,13 +82,14 @@ export default new Phaser.Class({
         //crate.scale.setTo(15,15)
 
 
-        this.kitten = new Kitten(this, constants.physics_x_start + 100, 10, 'kittenAnimation');
+        this.kitten = new Kitten(this, 250, 720, 'kittenAnimation');
         this.kitten.velocity = constants.kittenVelocity;
-        this.cat = new Cat(this, constants.physics_x_start + 100, 30, 'catAnimation');
+        this.cat = new Cat(this, 600, 690, 'catAnimation');
         this.cat.velocity = constants.catVelocity;
         //this.car = new Car(this, constants.car_x, constants.car_y);
 
         // Foreground images
+        this.add.image(200, 680, 'cardboard-box');
         this.add.image(2865, 568, 'garage-front');
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
