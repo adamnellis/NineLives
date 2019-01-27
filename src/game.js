@@ -49,13 +49,10 @@ export default new Phaser.Class({
         this.matter.add.image(1033, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1381, 223, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1381, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        // this.matter.add.image(2171, 224, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        // this.matter.add.image(2170, 516, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1782, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         // this.matter.add.image(2557, 535, 'garage-side', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(2800, 488, 'garage-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(3100, 640, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(3040, 450, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(2830, 488, 'garage-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(3295, 610, 'smallblock', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
         
         // TODO: More platforms from the background
@@ -79,6 +76,9 @@ export default new Phaser.Class({
         this.cat = new Cat(this, constants.physics_x_start + 100, 30, 'catAnimation');
         this.cat.velocity = constants.catVelocity;
         //this.car = new Car(this, constants.car_x, constants.car_y);
+
+        // Foreground images
+        this.add.image(2865, 568, 'garage-front');
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
         this.dot.visible = false;
