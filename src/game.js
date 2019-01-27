@@ -46,36 +46,25 @@ export default new Phaser.Class({
 
         // Platforms
 
+        // 1. before image.
         this.matter.add.image(1033, 224, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1033, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1381, 223, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1381, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1782, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        // this.matter.add.image(2557, 535, 'garage-side', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(2830, 488, 'garage-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(3295, 610, 'smallblock', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
-        this.matter.add.image(6533, 224, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(6533, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(6881, 223, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(6881, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(7282, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(7633, 224, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(7633, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(7981, 223, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(7981, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-
-        this.matter.add.image(8533, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(8881, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(9282, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(9633, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(9981, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-
-        this.matter.add.image(12533, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(12881, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(13282, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(13633, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(13981, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        // basic jumping
+        this.matter.add.image(6740, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(6740, 515, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(7295, 240, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(7295, 515, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(7850, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(8460, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(8460, 515, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(9150, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(9150, 515, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
 
         // TODO: More platforms from the background
