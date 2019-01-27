@@ -1,8 +1,8 @@
 
 // Widths of background images for the level
-const background1_width = 11642;
-const background2_width = 11457;
-const background3_width = 11687;
+const background1_width = 11676;
+const background2_width = 11676;
+const background3_width = 11676;
 
 export default {
     background1_width: background1_width,
