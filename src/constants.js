@@ -14,6 +14,8 @@ export default {
     viewport_height: 800,
     car_y: 629,
     car_x: 2030,
+    car_y2: 629,
+    car_x2: 8980,
     kittenVelocity: 15,
     catVelocity: 20,
     cat_x : 450,
@@ -21,9 +23,12 @@ export default {
     kitten_x : 400,
     kitten_y : 700,
     carSpawn: 1200,
+    carSpawn2: 6450,
+    carStop: 20600,
     catDistanceOffset : 250,
-    carVelocity : 25,
+    carVelocity : 15,
     physics_x_start : 210,
-    physics_y_end : 40
+    physics_y_end : 40,
+    carFlipDistance : 3000
 
 }
