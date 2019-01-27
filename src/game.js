@@ -53,7 +53,7 @@ export default new Phaser.Class({
         this.matter.add.image(1381, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(1782, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(2830, 488, 'garage-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(3295, 610, 'smallblock', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(3295, 605, 'smallblock', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
         // 2. basic jumping
         this.matter.add.image(6740, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
@@ -83,6 +83,7 @@ export default new Phaser.Class({
         // 4. street end
         this.matter.add.image(21410, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(21800, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(24650, 528, 'garage', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
 
         // TODO: More platforms from the background
