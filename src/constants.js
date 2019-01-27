@@ -1,8 +1,8 @@
 
 // Widths of background images for the level
-const background1_width = 11642;
-const background2_width = 11457;
-const background3_width = 11687;
+const background1_width = 11676;
+const background2_width = 11676;
+const background3_width = 11676;
 
 export default {
     background1_width: background1_width,
@@ -15,7 +15,7 @@ export default {
     car_y: 629,
     car_x: 600,
     kittenVelocity: 15,
-    catVelocity: 10,
+    catVelocity: 20,
     cat_x : 450,
     cat_y : 700,
     kitten_x : 400,
