@@ -21,8 +21,8 @@ export default class Player {
         const mainBody = Bodies.rectangle(0, offset, width, height, { chamfer: { radius: 10 } });
         this.sensors = {
             bottom: Bodies.rectangle(0, h * 0.5, w * 0.5, 2, { isSensor: true }),
-            left: Bodies.rectangle(-w * 0.35, 30, 2, h * 0.4, { isSensor: true }),
-            right: Bodies.rectangle(w * 0.35, 30, 2, h * 0.4, { isSensor: true })
+            left: Bodies.rectangle(-w * 0.35, 20, 2, h * 0.5, { isSensor: true }),
+            right: Bodies.rectangle(w * 0.35, 20, 2, h * 0.5, { isSensor: true })
         };
 
         const compoundBody = Body.create({
