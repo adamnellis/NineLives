@@ -27,7 +27,6 @@ export default {
     carStop: 20600,
     catDistanceOffset : 250,
     carVelocity : 15,
-    physics_x_start : 210,
     physics_y_end : 40,
     carFlipDistance : 3000
 
