@@ -18,6 +18,7 @@ export default new Phaser.Class({
         this.load.image('game-background-1', 'assets/background1.png');
         this.load.image('game-background-2', 'assets/background2.png');
         this.load.image('game-background-3', 'assets/background3.png');
+        this.load.image('garage-front', 'assets/garageFront.png');
         this.load.image('windowsill', 'assets/invisible/windowsill.png');
         this.load.image('smallblock', 'assets/small-block.png');
         this.load.image('door-top', 'assets/invisible/doorTop.png');

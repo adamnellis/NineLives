@@ -78,6 +78,9 @@ export default new Phaser.Class({
         this.cat.velocity = constants.catVelocity;
         //this.car = new Car(this, constants.car_x, constants.car_y);
 
+        // Foreground images
+        this.add.image(2865, 568, 'garage-front');
+
         this.dot = this.matter.add.sprite(700, 700, 'dot');
         this.dot.visible = false;
 
