@@ -24,7 +24,8 @@ export default new Phaser.Class({
 
         this.input.once('pointerup', function (event) {
 
-            this.scene.start('mainmenu');
+            // this.scene.start('mainmenu');
+            this.scene.start('lose', { reset: true });
 
         }, this);
     }

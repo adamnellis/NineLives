@@ -21,6 +21,10 @@ export default new Phaser.Class({
         else {
             this.death_type = null;
         }
+        if (data.reset) {
+            this.initialised = false;
+            this.scene.start('mainmenu');
+        }
     },
 
     create: function ()
