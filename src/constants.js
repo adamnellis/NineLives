@@ -15,7 +15,7 @@ export default {
     car_y: 629,
     car_x: 600,
     kittenVelocity: 15,
-    catVelocity: 10,
+    catVelocity: 20,
     cat_x : 450,
     cat_y : 700,
     kitten_x : 400,
