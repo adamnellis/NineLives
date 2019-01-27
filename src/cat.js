@@ -20,7 +20,8 @@ export default class Cat extends Player{
         this.rightInput = new MultiKey(scene, [RIGHT]);
         this.jumpInput = new MultiKey(scene, [UP]);
 
-
+        // Start looking left
+        this.sprite.setFlipX(false);
     }
 
     do_flashing_animation() {

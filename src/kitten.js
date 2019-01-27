@@ -24,6 +24,9 @@ export default class Kitten extends Player{
         this.leftInput = new MultiKey(scene, [A]);
         this.rightInput = new MultiKey(scene, [D]);
         this.jumpInput = new MultiKey(scene, [W]);
+
+        // Start looking right
+        this.sprite.setFlipX(true);
     }
 
 

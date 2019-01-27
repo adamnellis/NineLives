@@ -89,13 +89,14 @@ export default new Phaser.Class({
         //crate.scale.setTo(15,15)
 
 
-        this.kitten = new Kitten(this, constants.physics_x_start + 100, 10, 'kittenAnimation');
+        this.kitten = new Kitten(this, 250, 720, 'kittenAnimation');
         this.kitten.velocity = constants.kittenVelocity;
-        this.cat = new Cat(this, constants.physics_x_start + 100, 30, 'catAnimation');
+        this.cat = new Cat(this, 600, 690, 'catAnimation');
         this.cat.velocity = constants.catVelocity;
         //this.car = new Car(this, constants.car_x, constants.car_y);
 
         // Foreground images
+        this.add.image(200, 680, 'cardboard-box');
         this.add.image(2865, 568, 'garage-front');
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
