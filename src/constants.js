@@ -22,6 +22,8 @@ export default {
     kitten_y : 700,
     carSpawn: 1200,
     catDistanceOffset : 250,
-    carVelocity : 25
+    carVelocity : 25,
+    physics_x_start : 210,
+    physics_y_end : 40
 
 }

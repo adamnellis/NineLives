@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 import MultiKey from "./multi-key.js";
+import constants from './constants.js';
+
 
 export default class Player {
     constructor(scene, x, y, sheet, height, width, offset) {
@@ -117,7 +119,15 @@ export default class Player {
             sprite.setFlipX(true);
         }
 
-        if (isLeftKeyDown && !(isInAir && this.isTouching.left) && this.allowMoveLeft) {
+
+        //hack to bind to left
+        var tooLeft = this.sprite.x < constants.physics_x_start;
+
+        console.log('cat')
+        console.log(this.sprite.x);
+        console.log(constants.physics_x_start)
+
+        if (isLeftKeyDown && !(isInAir && this.isTouching.left) && this.allowMoveLeft && !tooLeft) {
             this.sprite.setVelocityX(-moveForce);
         } else if (isRightKeyDown && !(isInAir && this.isTouching.right) && this.allowMoveRight) {
             this.sprite.setVelocityX(moveForce);
