@@ -6,6 +6,7 @@ import Cat from "./cat.js";
 import Car from "./car.js";
 import Player from "./Player.js"
 
+
 import constants from './constants.js';
 
 export default new Phaser.Class({
@@ -119,18 +120,39 @@ export default new Phaser.Class({
         console.log(this.matter)
     },
 
+    onPlayerCollide({ gameObjectB }) {
+        if (!gameObjectB || !(gameObjectB instanceof Phaser.Tilemaps.Tile)) return;
+
+        const tile = gameObjectB;
+
+        // Check the tile property set in Tiled (you could also just check the index if you aren't using
+        // Tiled in your game)
+        if (tile.properties.isLethal) {
+            // Unsubscribe from collision events so that this logic is run only once
+            this.unsubscribePlayerCollide();
+
+            this.kitten.freeze();
+            const cam = this.cameras.main;
+            cam.fade(250, 0, 0, 0);
+            cam.once("camerafadeoutcomplete", () => this.scene.restart());
+        }
+    },
+
     update: function() {
         var catX = this.cat.sprite.x;
         var kittenX = this.kitten.sprite.x;
 
         this.dot.x = (catX + kittenX)/ 2
 
-        if(catX - kittenX > constants.viewport_width - 5){
+        if(catX - kittenX > constants.viewport_width - 10){
+            console.log('dont allwo')
             this.kitten.allowMoveRight = true;
             this.kitten.allowMoveLeft = false;
             this.cat.allowMoveRight = false;
             this.cat.allowMoveLeft = true;
-        } else if(kittenX - catX > constants.viewport_width - 5){
+ 1       } else if(kittenX - catX > constants.viewport_width - 10){
+            console.log('dont allwo')
+
             this.kitten.allowMoveRight = false;
             this.kitten.allowMoveLeft = true;
             this.cat.allowMoveRight = true;
@@ -148,6 +170,7 @@ export default new Phaser.Class({
                 // Animation finished
                 this.cat_flash_timer = null
                 console.log('change scene')
+                this.kitten.destroy()
                 this.scene.start('lose', { death_type: 'car' });
             }
             this.cat_flash_timer -= 1;
