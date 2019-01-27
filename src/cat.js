@@ -15,10 +15,11 @@ export default class Cat extends Player{
             repeat: 1
         });
 
-        const { LEFT, RIGHT, UP, A, D, W } = Phaser.Input.Keyboard.KeyCodes;
+        const { LEFT, RIGHT, UP, DOWN } = Phaser.Input.Keyboard.KeyCodes;
         this.leftInput = new MultiKey(scene, [LEFT]);
         this.rightInput = new MultiKey(scene, [RIGHT]);
         this.jumpInput = new MultiKey(scene, [UP]);
+        this.downInput = new MultiKey(scene, [DOWN])
 
         // Start looking left
         this.sprite.setFlipX(false);

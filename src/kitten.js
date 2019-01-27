@@ -20,10 +20,11 @@ export default class Kitten extends Player{
             frameRate: 0,
             repeat: 0
         });
-        const { LEFT, RIGHT, UP, A, D, W } = Phaser.Input.Keyboard.KeyCodes;
+        const { S, A, D, W } = Phaser.Input.Keyboard.KeyCodes;
         this.leftInput = new MultiKey(scene, [A]);
         this.rightInput = new MultiKey(scene, [D]);
         this.jumpInput = new MultiKey(scene, [W]);
+        this.downInput = new MultiKey(scene, [S]);
 
         // Start looking right
         this.sprite.setFlipX(true);
