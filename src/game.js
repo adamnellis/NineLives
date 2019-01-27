@@ -27,6 +27,7 @@ export default new Phaser.Class({
 
         this.matter.world.enabled = true;
 
+        this.carSpawed = false
         const physics_x_start = 210;
         const physics_y_end = 40;
         this.matter.world.setBounds(physics_x_start, 0, constants.game_width - physics_x_start, constants.game_height - physics_y_end);
@@ -63,11 +64,11 @@ export default new Phaser.Class({
         //     this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
         // }
 
-        this.kitten = new Kitten(this, physics_x_start + 100, 10, 'kitten');
+        this.kitten = new Kitten(this, constants.kitten_x, constants.kitten_y, 'kitten');
         this.kitten.velocity = constants.kittenVelocity;
-        this.cat = new Cat(this, physics_x_start + 100, 30, 'cat');
+        this.cat = new Cat(this, constants.cat_x, constants.cat_y, 'cat');
         this.cat.velocity = constants.catVelocity;
-        this.car = new Car(this, constants.car_x, constants.car_y);
+       // this.car = new Car(this, constants.car_x, constants.car_y);
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
         this.dot.visible = false;
@@ -136,6 +137,8 @@ export default new Phaser.Class({
             cam.fade(250, 0, 0, 0);
             cam.once("camerafadeoutcomplete", () => this.scene.restart());
         }
+
+
     },
 
     update: function() {
@@ -145,14 +148,11 @@ export default new Phaser.Class({
         this.dot.x = (catX + kittenX)/ 2
 
         if(catX - kittenX > constants.viewport_width - 10){
-            console.log('dont allwo')
             this.kitten.allowMoveRight = true;
             this.kitten.allowMoveLeft = false;
             this.cat.allowMoveRight = false;
             this.cat.allowMoveLeft = true;
  1       } else if(kittenX - catX > constants.viewport_width - 10){
-            console.log('dont allwo')
-
             this.kitten.allowMoveRight = false;
             this.kitten.allowMoveLeft = true;
             this.cat.allowMoveRight = true;
@@ -163,6 +163,15 @@ export default new Phaser.Class({
             this.cat.allowMoveRight = true;
             this.cat.allowMoveLeft = true;
         }
+
+console.log(this.carSpawed)
+        if(this.dot.x > 1500 && this.carSpawed == false){
+            console.log('spawn')
+            this.carSpawed = true;
+            this.car = new Car(this, constants.car_x, constants.car_y);
+        }
+
+
 
         if (this.cat_flash_timer !== null) {
             // We are in a cat death animation

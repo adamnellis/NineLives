@@ -112,17 +112,14 @@ export default class Player {
         const moveForce = isOnGround ? 10 : 5;
 
         if(isLeftKeyDown){
-            sprite.setFlipX(true);
-        }else if(isRightKeyDown){
             sprite.setFlipX(false);
+        }else if(isRightKeyDown){
+            sprite.setFlipX(true);
         }
 
         if (isLeftKeyDown && !(isInAir && this.isTouching.left) && this.allowMoveLeft) {
-            sprite.setFlipX(true);
-            this.sprite.flipX = false;
             this.sprite.setVelocityX(-moveForce);
         } else if (isRightKeyDown && !(isInAir && this.isTouching.right) && this.allowMoveRight) {
-            this.sprite.flipX = false;
             this.sprite.setVelocityX(moveForce);
         } else {
             this.sprite.setVelocityX(0);
