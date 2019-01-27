@@ -48,7 +48,7 @@ export default new Phaser.Class({
         kitten.setFlipX(true);
         this.add.image(900, 560, 'catAnimation', 0);
 
-        this.timer = 300;
+        this.timer = 100;
     },
 
     update: function() {
