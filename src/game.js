@@ -54,7 +54,7 @@ export default new Phaser.Class({
         this.matter.add.image(2830, 488, 'garage-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(3295, 610, 'smallblock', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
-        // basic jumping
+        // 2. basic jumping
         this.matter.add.image(6740, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(6740, 515, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(7295, 240, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
@@ -65,6 +65,13 @@ export default new Phaser.Class({
         this.matter.add.image(9150, 240, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(9150, 515, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
+        // 3. long jumps
+        this.matter.add.image(11385, 515, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(11805, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(12375, 515, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(13055, 515, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(13665, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(14145, 515, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
         // TODO: More platforms from the background
 
