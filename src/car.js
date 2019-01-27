@@ -14,6 +14,8 @@ export default class Car {
 
         this.sprite.setFlipX(true);
 
+        this.sprite.setCollidesWith([ 1,2 ]);
+
         this.sprite.setFixedRotation()
         this.scene.events.on("update", this.update, this);
 
@@ -33,7 +35,9 @@ export default class Car {
     update() {
         if (this.run_animation) {
             this.sprite.anims.play('left', true);
+
             this.sprite.setVelocityX(-constants.carVelocity);
+
         }
 
     }

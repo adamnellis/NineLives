@@ -32,9 +32,8 @@ export default new Phaser.Class({
         }
 
         this.carSpawed = false
-        const physics_x_start = 210;
-        const physics_y_end = 40;
-        this.matter.world.setBounds(physics_x_start, 0, constants.game_width - physics_x_start, constants.game_height - physics_y_end);
+
+        this.matter.world.setBounds(-1000, 0, constants.game_width - constants.physics_x_start, constants.game_height - constants.physics_y_end);
 
         // Background image
         let current_x = 0;
@@ -94,11 +93,14 @@ export default new Phaser.Class({
         //crate.scale.setTo(15,15)
 
 
-        this.kitten = new Kitten(this, physics_x_start + 100, 10, 'kittenAnimation');
+        this.kitten = new Kitten(this, constants.physics_x_start + 100, 10, 'kittenAnimation');
         this.kitten.velocity = constants.kittenVelocity;
-        this.cat = new Cat(this, physics_x_start + 100, 30, 'catAnimation');
+        this.cat = new Cat(this, constants.physics_x_start + 100, 30, 'catAnimation');
         this.cat.velocity = constants.catVelocity;
         //this.car = new Car(this, constants.car_x, constants.car_y);
+
+        // Foreground images
+        this.add.image(2865, 568, 'garage-front');
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
         this.dot.visible = false;
@@ -194,8 +196,8 @@ export default new Phaser.Class({
 
         if(this.dot.x > constants.carSpawn && this.carSpawed == false){
 
-            // this.carSpawed = true;
-            // this.car = new Car(this, constants.car_x, constants.car_y);
+             this.carSpawed = true;
+             this.car = new Car(this, constants.car_x, constants.car_y);
 
         }
 
