@@ -42,7 +42,11 @@ export default new Phaser.Class({
 
         this.lives[this.current_life] = '🚗';
 
-        this.text = this.add.text(100, 200, this.lives.join(''), {font: '30px Courier', fill: '#ff0000'});
+        this.text = this.add.text(340, 250, this.lives.join(''), {font: '40px Courier', fill: '#ff0000'});
+
+        const kitten = this.add.image(300, 580, 'kittenAnimation', 0);
+        kitten.setFlipX(true);
+        this.add.image(900, 560, 'catAnimation', 0);
 
         this.timer = 300;
     },

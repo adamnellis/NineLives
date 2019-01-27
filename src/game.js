@@ -75,14 +75,16 @@ export default new Phaser.Class({
         this.matter.add.image(14146, 515, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
         // 3. Cinema fun
-        this.matter.add.image(16080, 260, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(16595, 260, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(15980, 438, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(16350, 380, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(16705, 438, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(19050, 260, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(19570, 260, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(17830, 230, 'cinema-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         
         // 4. street end
         this.matter.add.image(21410, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
-        this.matter.add.image(21800, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(21810, 315, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
         this.matter.add.image(24650, 528, 'garage', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
 
@@ -231,13 +233,13 @@ export default new Phaser.Class({
         }
 
         // if(this.dot.x > constants.carStop){
-        //         this.car2.stop();
+        //      this.car2.stop();
         // }
 
         if(this.carSpawed2){
 
 
-
+            
             if(this.dot.x - this.car2.sprite.x > constants.carFlipDistance ){
                 this.car2.flipCar(true);
             } else if(this.car2.sprite.x - this.dot.x > constants.carFlipDistance){
