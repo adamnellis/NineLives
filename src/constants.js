@@ -1,6 +1,6 @@
 
 // Widths of background images for the level
-const background1_width = 11695;
+const background1_width = 11642;
 const background2_width = 11457;
 const background3_width = 11687;
 
