@@ -105,6 +105,7 @@ export default class Player {
         const isRightKeyDown = this.rightInput.isDown();
         const isLeftKeyDown = this.leftInput.isDown();
         const isJumpKeyDown = this.jumpInput.isDown();
+        const isDown = this.downInput.isDown();
         const isOnGround = this.isTouching.ground;
         const isInAir = !isOnGround;
 
@@ -150,6 +151,10 @@ export default class Player {
 
         if (this.flashing_animation_key) {
             this.sprite.anims.play(this.flashing_animation_key, true);
+        }
+
+        if(isDown) {
+            console.log(this.sprite.x + ' ' + this.sprite.y)
         }
 
     }

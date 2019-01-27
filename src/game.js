@@ -91,15 +91,28 @@ export default new Phaser.Class({
         // TODO: More platforms from the background
 
         // // Moving obstacles
-        // for (let i=0; i< 10; i++) {
-        //     this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
-        // }
+        let cans = [[1006, 476], [1433, 138], [1423, 138],[3311,714],[6704,428],[6831,428],[8546,428],[9230,153],[11827,228],[16659,173],[16492,173]]
+        for(let c of cans){
+            this.matter.add.image(c[0], c[1], 'can');
+        }
+
+        let yarn = [[1166,713],[1382,430],[6585,713],[7278,153],[8399,428],[9064,153],[13033,428],[14143,428]]
+        for(let y of yarn){
+           var ball = this.matter.add.image(y[0], y[1], 'yarn');
+           ball.setCircle();
+        }
 
 
-         var crate = this.matter.add.image(2575, 324, 'crate');
+        var crate = this.matter.add.image(2575, 324, 'crate');
         crate.setScale(2)
         var crate2 = this.matter.add.image(2575, 384, 'crate');
         crate2.setScale(2)
+
+
+
+
+
+
 
 
         this.kitten = new Kitten(this, 250, 720, 'kittenAnimation');
@@ -213,14 +226,14 @@ export default new Phaser.Class({
 
         if(this.dot.x > constants.carSpawn2 && this.carSpawed2 == false){
 
-           this.carSpawed2 = true;
-            this.car2 = new Car(this, constants.car_x2, constants.car_y2);
+           // this.carSpawed2 = true;
+           //  this.car2 = new Car(this, constants.car_x2, constants.car_y2);
 
         }
 
-        if(this.dot.x > constants.carStop){
-             this.car2.stop();
-        }
+        // if(this.dot.x > constants.carStop){
+        //      this.car2.stop();
+        // }
 
         if(this.carSpawed2){
 
