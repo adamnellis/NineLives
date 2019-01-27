@@ -34,7 +34,7 @@ export default new Phaser.Class({
         this.carSpawed = false
         this.carSpawed2 = false
 
-        this.matter.world.setBounds(-1000, 0, constants.game_width - constants.physics_x_start, constants.game_height - constants.physics_y_end);
+        this.matter.world.setBounds(-1000, 0, constants.game_width + 1000 - 40, constants.game_height - constants.physics_y_end);
 
         // Background image
         let current_x = 0;
