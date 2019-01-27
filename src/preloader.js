@@ -21,6 +21,7 @@ export default new Phaser.Class({
         this.load.image('cardboard-box', 'assets/cardboardBox.png');
         this.load.image('garage-front', 'assets/garageFront.png');
         this.load.image('garage', 'assets/invisible/garage.png');
+        this.load.image('cinema-top', 'assets/invisible/cinema.png');
         this.load.image('fancy-building-top', 'assets/fancyBuildingTop.png');
         this.load.image('windowsill', 'assets/invisible/windowsill.png');
         this.load.image('smallblock', 'assets/small-block.png');
