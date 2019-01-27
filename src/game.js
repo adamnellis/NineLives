@@ -109,6 +109,7 @@ export default new Phaser.Class({
         // Foreground images
         this.add.image(200, 680, 'cardboard-box');
         this.add.image(2865, 568, 'garage-front');
+        this.add.image(17820, 203, 'fancy-building-top');
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
         this.dot.visible = false;
