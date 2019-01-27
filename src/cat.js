@@ -6,7 +6,7 @@ export default class Cat extends Player{
 
 
     constructor(scene, x, y, sheet) {
-        super(scene, x, y, sheet);
+        super(scene, x, y, sheet, 150, 70, 28);
 
         this.scene.anims.create({
             key: 'cat_flash',
@@ -25,6 +25,5 @@ export default class Cat extends Player{
 
     do_flashing_animation() {
         this.flashing_animation_key = 'cat_flash';
-        this.sprite.texture = "catAnimation";
     }
 }

@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import MultiKey from "./multi-key.js";
 
 export default class Player {
-    constructor(scene, x, y, sheet) {
+    constructor(scene, x, y, sheet, height, width, offset) {
         this.scene = scene;
 
 
@@ -18,11 +18,11 @@ export default class Player {
 
         const { Body, Bodies } = Phaser.Physics.Matter.Matter; // Native Matter modules
         const { width: w, height: h } = this.sprite;
-        const mainBody = Bodies.rectangle(0, 0, w * 0.6, h, { chamfer: { radius: 10 } });
+        const mainBody = Bodies.rectangle(0, offset, width, height, { chamfer: { radius: 10 } });
         this.sensors = {
             bottom: Bodies.rectangle(0, h * 0.5, w * 0.25, 2, { isSensor: true }),
-            left: Bodies.rectangle(-w * 0.35, 0, 2, h * 0.5, { isSensor: true }),
-            right: Bodies.rectangle(w * 0.35, 0, 2, h * 0.5, { isSensor: true })
+            left: Bodies.rectangle(-w * 0.35, 30, 2, h * 0.4, { isSensor: true }),
+            right: Bodies.rectangle(w * 0.35, 30, 2, h * 0.4, { isSensor: true })
         };
 
         const compoundBody = Body.create({

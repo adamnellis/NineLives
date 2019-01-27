@@ -64,9 +64,10 @@ export default new Phaser.Class({
         //     this.matter.add.sprite(Phaser.Math.Between(20, 700), 16, 'crate');
         // }
 
-        this.kitten = new Kitten(this, constants.kitten_x, constants.kitten_y, 'kitten');
+
+        this.kitten = new Kitten(this, physics_x_start + 100, 10, 'kittenAnimation');
         this.kitten.velocity = constants.kittenVelocity;
-        this.cat = new Cat(this, constants.cat_x, constants.cat_y, 'cat');
+        this.cat = new Cat(this, physics_x_start + 100, 30, 'catAnimation');
         this.cat.velocity = constants.catVelocity;
        // this.car = new Car(this, constants.car_x, constants.car_y);
 
