@@ -148,12 +148,12 @@ export default new Phaser.Class({
 
         this.dot.x = (catX + kittenX)/ 2
 
-        if(catX - kittenX > constants.viewport_width - 10){
+        if(catX - kittenX > constants.viewport_width - constants.catDistanceOffset){
             this.kitten.allowMoveRight = true;
             this.kitten.allowMoveLeft = false;
             this.cat.allowMoveRight = false;
             this.cat.allowMoveLeft = true;
- 1       } else if(kittenX - catX > constants.viewport_width - 10){
+ 1       } else if(kittenX - catX > constants.viewport_width - constants.catDistanceOffset){
             this.kitten.allowMoveRight = false;
             this.kitten.allowMoveLeft = true;
             this.cat.allowMoveRight = true;
@@ -165,9 +165,7 @@ export default new Phaser.Class({
             this.cat.allowMoveLeft = true;
         }
 
-console.log(this.carSpawed)
-        if(this.dot.x > 1500 && this.carSpawed == false){
-            console.log('spawn')
+        if(this.dot.x > constants.carSpawn && this.carSpawed == false){
             this.carSpawed = true;
             this.car = new Car(this, constants.car_x, constants.car_y);
         }
