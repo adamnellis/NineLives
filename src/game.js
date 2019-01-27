@@ -197,16 +197,20 @@ export default new Phaser.Class({
 
         if(this.dot.x > constants.carSpawn && this.carSpawed == false){
 
-             //this.carSpawed = true;
-             //this.car = new Car(this, constants.car_x, constants.car_y);
+             // this.carSpawed = true;
+             // this.car = new Car(this, constants.car_x, constants.car_y);
 
         }
 
         if(this.dot.x > constants.carSpawn2 && this.carSpawed2 == false){
 
             this.carSpawed2 = true;
-            //this.car2 = new Car(this, constants.car_x2, constants.car_y2);
+            this.car2 = new Car(this, constants.car_x2, constants.car_y2);
 
+        }
+
+        if(this.dot.x > constants.carStop){
+            this.car2.stop();
         }
 
 

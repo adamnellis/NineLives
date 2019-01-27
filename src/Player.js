@@ -123,8 +123,8 @@ export default class Player {
         //hack to bind to left
         var tooLeft = this.sprite.x < constants.physics_x_start;
 
-        console.log('cat')
-        console.log(this.sprite.x);
+        // console.log('cat')
+        // console.log(this.sprite.x);
 
         if (isLeftKeyDown && !(isInAir && this.isTouching.left) && this.allowMoveLeft && !tooLeft) {
             this.sprite.setVelocityX(-moveForce);
