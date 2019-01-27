@@ -46,7 +46,7 @@ export default new Phaser.Class({
             { frameWidth: 691, frameHeight: 259 });
       
         this.load.spritesheet("kittenAnimation", "assets/fullKitten2.png", { frameWidth: 118, frameHeight: 140 });
-        this.load.spritesheet("catAnimation", "assets/fullCat2.png", { frameWidth: 119, frameHeight: 220 });
+        this.load.spritesheet("catAnimation", "assets/FullCat2.png", { frameWidth: 119, frameHeight: 220 });
         this.load.image("dot", "assets/dot.png");
     },
 
