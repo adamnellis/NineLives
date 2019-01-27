@@ -89,29 +89,30 @@ export default new Phaser.Class({
         // TODO: More platforms from the background
 
         // // Moving obstacles
-        let cans = [[1006, 476], [1433, 138], [1423, 138],[3311,714],[6704,428],[6831,428],[8546,428],[9230,153],[11827,228],[16659,173],[16492,173]]
+        let cans = [[1006, 476],[1433, 138],[1423, 138],[3311,714],[6704,428],[1382,310],[6585,713],[7278,153],[8399,428],[9064,153],[6831,428],[8546,428],[9230,153],[11827,228],[16659,173],[16492,173]]
         for(let c of cans){
             this.matter.add.image(c[0], c[1], 'can');
         }
 
-        let yarn = [[1166,713],[1382,430],[6585,713],[7278,153],[8399,428],[9064,153],[13033,428],[14143,428]]
+        let yarn = [[1166,510],[13033,428],[14143,428]]
         for(let y of yarn){
            var ball = this.matter.add.image(y[0], y[1], 'yarn');
            ball.setCircle();
+            // console.log(ball)
+            // ball.body.mass = 100
+            // ball.setFriction(0.05);
+            // ball.setBounce(0.6);
+            // ball.setVelocityX(1);
+            // ball.setAngularVelocity(0.15);
         }
 
 
-        var crate = this.matter.add.image(2575, 324, 'crate');
-        crate.setScale(2)
-        var crate2 = this.matter.add.image(2575, 384, 'crate');
-        crate2.setScale(2)
 
-
-
-
-
-
-
+        let crates =[[2575,324],[2575,384],[21779,228],[21411,228]];
+        for (let r of crates){
+            let crate = this.matter.add.image(r[0],r[1], 'crate');
+            crate.setScale(2)
+        }
 
         this.kitten = new Kitten(this, 250, 720, 'kittenAnimation');
         this.kitten.velocity = constants.kittenVelocity;
