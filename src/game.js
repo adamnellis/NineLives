@@ -42,7 +42,8 @@ export default new Phaser.Class({
 
         // Platforms
         const invisible_objects = [];
-        const windowsill_physics = { restitution: 0.6, isStatic: true };
+        const windowsill_physics = { restitution: 0.6, isStatic: true, chamfer: { radius: 10 }  };
+
         invisible_objects.push(this.matter.add.image(1023, 224, 'windowsill', null, windowsill_physics));
         invisible_objects.push(this.matter.add.image(1023, 518, 'windowsill', null, windowsill_physics));
         invisible_objects.push(this.matter.add.image(1371, 223, 'windowsill', null, windowsill_physics));
@@ -65,11 +66,19 @@ export default new Phaser.Class({
         // }
 
 
+         var crate = this.matter.add.image(2545, 324, 'crate');
+        crate.setScale(3)
+
+        console.log('crate')
+        console.log(crate)
+        //crate.scale.setTo(15,15)
+
+
         this.kitten = new Kitten(this, physics_x_start + 100, 10, 'kittenAnimation');
         this.kitten.velocity = constants.kittenVelocity;
         this.cat = new Cat(this, physics_x_start + 100, 30, 'catAnimation');
         this.cat.velocity = constants.catVelocity;
-       // this.car = new Car(this, constants.car_x, constants.car_y);
+        //this.car = new Car(this, constants.car_x, constants.car_y);
 
         this.dot = this.matter.add.sprite(700, 700, 'dot');
         this.dot.visible = false;
@@ -167,7 +176,7 @@ export default new Phaser.Class({
 
         if(this.dot.x > constants.carSpawn && this.carSpawed == false){
             this.carSpawed = true;
-            this.car = new Car(this, constants.car_x, constants.car_y);
+            //this.car = new Car(this, constants.car_x, constants.car_y);
         }
 
 

@@ -13,14 +13,15 @@ export default {
     viewport_width: 1200,
     viewport_height: 800,
     car_y: 629,
-    car_x: 600,
+    car_x: 2030,
     kittenVelocity: 15,
     catVelocity: 20,
     cat_x : 450,
     cat_y : 700,
     kitten_x : 400,
     kitten_y : 700,
-    carSpawn: 1400,
-    catDistanceOffset : 250
+    carSpawn: 1200,
+    catDistanceOffset : 250,
+    carVelocity : 25
 
 }

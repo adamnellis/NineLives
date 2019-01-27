@@ -1,3 +1,5 @@
+import constants from './constants.js';
+
 export default class Car {
     constructor(scene, x, y) {
 
@@ -9,6 +11,8 @@ export default class Car {
             width: 550,
             height: 128
         });
+
+        this.sprite.setFlipX(true);
 
         this.sprite.setFixedRotation()
         this.scene.events.on("update", this.update, this);
@@ -30,7 +34,7 @@ export default class Car {
         if (this.run_animation) {
             this.sprite.anims.play('left', true);
         }
-        this.sprite.setVelocityX(25);
+        this.sprite.setVelocityX(-constants.carVelocity);
     }
 
     stop_animation() {
