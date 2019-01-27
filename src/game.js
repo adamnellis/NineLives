@@ -95,7 +95,8 @@ export default new Phaser.Class({
 
          var crate = this.matter.add.image(2575, 324, 'crate');
         crate.setScale(2)
-
+        var crate2 = this.matter.add.image(2575, 384, 'crate');
+        crate2.setScale(2)
 
 
         this.kitten = new Kitten(this, 250, 720, 'kittenAnimation');
