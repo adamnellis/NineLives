@@ -25,7 +25,11 @@ export default new Phaser.Class({
     {
         console.log('%c Game ', 'background: green; color: white; display: block;');
 
+        // Clean up after restarting scene
         this.matter.world.enabled = true;
+        if (this.car) {
+            this.car.sprite.destroy()
+        }
 
         this.carSpawed = false
         const physics_x_start = 210;
@@ -41,23 +45,20 @@ export default new Phaser.Class({
         this.add.image(current_x + constants.background3_width / 2, constants.game_height / 2, 'game-background-3');
 
         // Platforms
-        const invisible_objects = [];
-        const windowsill_physics = { restitution: 0.6, isStatic: true, chamfer: { radius: 10 }  };
 
-        invisible_objects.push(this.matter.add.image(1023, 224, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1023, 518, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1371, 223, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1371, 517, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(2161, 224, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(2160, 516, 'windowsill', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(1772, 324, 'door-top', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(2547, 535, 'garage-side', null, windowsill_physics));
-        invisible_objects.push(this.matter.add.image(3059, 328, 'garage-top', null, windowsill_physics));
+        this.matter.add.image(1033, 224, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(1033, 518, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(1381, 223, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(1381, 517, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        // this.matter.add.image(2171, 224, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        // this.matter.add.image(2170, 516, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(1782, 324, 'door-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        // this.matter.add.image(2557, 535, 'garage-side', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(2800, 488, 'garage-top', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(3100, 640, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
+        this.matter.add.image(3040, 450, 'windowsill', null, { restitution: 0.6, isStatic: true, chamfer: { radius: 10 } });
 
-        for (const object of invisible_objects) {
-            object.alpha = 0; //0.8; // Set to 0.8 for debugging, and 0 for production
-        }
-
+        
         // TODO: More platforms from the background
 
         // // Moving obstacles
@@ -143,9 +144,7 @@ export default new Phaser.Class({
             this.unsubscribePlayerCollide();
 
             this.kitten.freeze();
-            const cam = this.cameras.main;
-            cam.fade(250, 0, 0, 0);
-            cam.once("camerafadeoutcomplete", () => this.scene.restart());
+            this.cat.freeze();
         }
 
 
@@ -162,7 +161,7 @@ export default new Phaser.Class({
             this.kitten.allowMoveLeft = false;
             this.cat.allowMoveRight = false;
             this.cat.allowMoveLeft = true;
- 1       } else if(kittenX - catX > constants.viewport_width - constants.catDistanceOffset){
+        } else if(kittenX - catX > constants.viewport_width - constants.catDistanceOffset){
             this.kitten.allowMoveRight = false;
             this.kitten.allowMoveLeft = true;
             this.cat.allowMoveRight = true;
@@ -175,8 +174,10 @@ export default new Phaser.Class({
         }
 
         if(this.dot.x > constants.carSpawn && this.carSpawed == false){
-            this.carSpawed = true;
-            //this.car = new Car(this, constants.car_x, constants.car_y);
+
+            // this.carSpawed = true;
+            // this.car = new Car(this, constants.car_x, constants.car_y);
+
         }
 
 
@@ -185,9 +186,12 @@ export default new Phaser.Class({
             // We are in a cat death animation
             if (this.cat_flash_timer < 0) {
                 // Animation finished
-                this.cat_flash_timer = null
-                console.log('change scene')
-                this.kitten.destroy()
+                this.cat_flash_timer = null;
+                const cam = this.cameras.main;
+                // cam.fade(250, 0, 0, 0);
+                // cam.once("camerafadeoutcomplete", () => {
+                //     this.scene.start('lose', { death_type: 'car' });
+                // });
                 this.scene.start('lose', { death_type: 'car' });
             }
             this.cat_flash_timer -= 1;
